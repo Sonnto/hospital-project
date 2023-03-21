@@ -32,6 +32,8 @@ namespace hospital_project.Models
         //Departments Table
         public DbSet<Department> Departments { get; set; }
 
+        public DbSet<Volunteer> Volunteers { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
