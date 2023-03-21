@@ -116,4 +116,3 @@ C:\Users\Anthony\Documents\GitHub\hospital-project\obj\Debug\hospital_project.Mi
 C:\Users\Anthony\Documents\GitHub\hospital-project\obj\Debug\hospital-project.csproj.GenerateResource.cache
 C:\Users\Anthony\Documents\GitHub\hospital-project\obj\Debug\hospital_project.Migrations.Physician.resources
 C:\Users\Anthony\Documents\GitHub\hospital-project\obj\Debug\hospital_project.Migrations.Departments.resources
-C:\Users\Anthony\Documents\GitHub\hospital-project\obj\Debug\hospital_project.Migrations.Volunteers.resources
