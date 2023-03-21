@@ -25,6 +25,13 @@ namespace hospital_project.Models
         {
         }
 
+        // ============ ADD MODELS BELOW SO WHEN MIGRATING THEY BECOME TABLES ============
+        // public DbSet<ModelNameSingular> ModelNamePlural { get; set;}
+        //Physicians Table
+        public DbSet<Physician> Physicians { get; set; }
+        //Departments Table
+        public DbSet<Department> Departments { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
