@@ -112,3 +112,7 @@ C:\Users\Anthony\Documents\GitHub\hospital-project\obj\Debug\hospital-project.cs
 C:\Users\Anthony\Documents\GitHub\hospital-project\obj\Debug\hospital-project.csproj.CopyComplete
 C:\Users\Anthony\Documents\GitHub\hospital-project\obj\Debug\hospital-project.dll
 C:\Users\Anthony\Documents\GitHub\hospital-project\obj\Debug\hospital-project.pdb
+C:\Users\Anthony\Documents\GitHub\hospital-project\obj\Debug\hospital_project.Migrations.InitialCreate.resources
+C:\Users\Anthony\Documents\GitHub\hospital-project\obj\Debug\hospital-project.csproj.GenerateResource.cache
+C:\Users\Anthony\Documents\GitHub\hospital-project\obj\Debug\hospital_project.Migrations.Physician.resources
+C:\Users\Anthony\Documents\GitHub\hospital-project\obj\Debug\hospital_project.Migrations.Departments.resources
