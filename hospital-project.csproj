@@ -183,6 +183,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LabController.cs" />
+    <Compile Include="Controllers\LabDataController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -203,12 +205,21 @@
     <Compile Include="Migrations\202303211617038_Volunteers.designer.cs">
       <DependentUpon>202303211617038_Volunteers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202304010730073_Lab.cs" />
+    <Compile Include="Migrations\202304010730073_Lab.designer.cs">
+      <DependentUpon>202304010730073_Lab.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Lab.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Physician.cs" />
+    <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\Researcher.cs" />
+    <Compile Include="Models\ViewModels\DetailsLab.cs" />
+    <Compile Include="Models\ViewModels\UpdateLab.cs" />
     <Compile Include="Models\Volunteer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -269,6 +280,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Lab\Create.cshtml" />
+    <Content Include="Views\Lab\DeleteConfirm.cshtml" />
+    <Content Include="Views\Lab\Details.cshtml" />
+    <Content Include="Views\Lab\Edit.cshtml" />
+    <Content Include="Views\Lab\List.cshtml" />
+    <Content Include="Views\LabData\Create.cshtml" />
+    <Content Include="Views\LabData\Delete.cshtml" />
+    <Content Include="Views\LabData\Details.cshtml" />
+    <Content Include="Views\LabData\Edit.cshtml" />
+    <Content Include="Views\LabData\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -298,6 +319,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303211617038_Volunteers.resx">
       <DependentUpon>202303211617038_Volunteers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304010730073_Lab.resx">
+      <DependentUpon>202304010730073_Lab.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
