@@ -1,0 +1,51 @@
+﻿@*@model IEnumerable<hospital_project.Models.Patient>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.patient_fname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.patient_surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.patient_condition)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.primary_physician_id)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.patient_fname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.patient_surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.patient_condition)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.primary_physician_id)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.patient_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.patient_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.patient_id })
+        </td>
+    </tr>
+}
+
+</table>*@

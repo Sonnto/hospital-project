@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.ComponentModel.DataAnnotations;
+
+namespace hospital_project.Models
+{
+    public class Patient
+    {
+        [Key]
+        public int patient_id { get; set; }
+        public string patient_fname { get; set; }
+        public string patient_surname { get; set; }
+        public string patient_condition { get; set; }
+
+        public string primary_physician_id { get; set; }
+    }
+    public class PatientDto { 
+    public int patient_id { get; set; }
+    public string patient_fname { get; set; }
+    public string patient_surname { get; set; }
+    public string patient_condition { get; set; }
+
+    public string primary_physician_id { get; set; }
+    }
+}

@@ -32,9 +32,15 @@ namespace hospital_project.Models
         //Departments Table
         public DbSet<Department> Departments { get; set; }
 
+        public DbSet<Appointment> Appointments { get; set; }
+
+        public DbSet<Patient> Patients { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<hospital_project.Models.Patient> Patients { get; set; }
     }
 }
