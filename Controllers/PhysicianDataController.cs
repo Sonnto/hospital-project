@@ -18,9 +18,20 @@ namespace hospital_project.Controllers
 
         // GET: api/PhysicianData/ListPhysicians
         [HttpGet]
-        public IQueryable<Physician> ListPhysicians()
+        public IEnumerable<PhysicianDto> ListPhysicians()
         {
-            return db.Physicians;
+            List<Physician> Physicians = db.Physicians.ToList();
+            List<PhysicianDto> PhysicianDtos = new List<PhysicianDto>();
+
+            Physicians.ForEach(p => PhysicianDtos.Add(new PhysicianDto()
+            {
+                physician_id = p.physician_id,
+                first_name = p.first_name,
+                last_name = p.last_name,
+                email = p.email,
+            }));
+
+            return PhysicianDtos;
         }
 
         // GET: api/PhysicianData/FindPhysician/5
@@ -28,13 +39,20 @@ namespace hospital_project.Controllers
         [HttpGet]
         public IHttpActionResult FindPhysician(int id)
         {
-            Physician physician = db.Physicians.Find(id);
-            if (physician == null)
+            Physician Physician = db.Physicians.Find(id);
+            PhysicianDto PhysicianDto = new PhysicianDto()
+            {
+                physician_id = Physician.physician_id,
+                first_name = Physician.first_name,
+                last_name = Physician.last_name,
+                email = Physician.email,
+            };
+            if (Physician == null)
             {
                 return NotFound();
             }
 
-            return Ok(physician);
+            return Ok(PhysicianDto);
         }
 
         // POST: api/PhysicianData/UpdatePhysician/5

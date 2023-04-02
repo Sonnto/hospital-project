@@ -22,4 +22,14 @@ namespace hospital_project.Models
         public string availability_dates { get; set; }
 
     }
+
+    public class AvailabilityDto
+    {
+        public int availability_id { get; set; }
+        public string physician_first_name { get; set; }
+        public string physician_last_name { get; set; }
+
+        public string department_name { get; set; }
+        public string availability_dates { get; set; }
+    }
 }
