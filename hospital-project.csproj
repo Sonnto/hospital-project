@@ -199,12 +199,26 @@
     <Compile Include="Migrations\202303211442122_Departments.designer.cs">
       <DependentUpon>202303211442122_Departments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303211617038_Volunteers.cs" />
+    <Compile Include="Migrations\202303211617038_Volunteers.designer.cs">
+      <DependentUpon>202303211617038_Volunteers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303262126589_Physicians-Departments.cs" />
+    <Compile Include="Migrations\202303262126589_Physicians-Departments.designer.cs">
+      <DependentUpon>202303262126589_Physicians-Departments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304020020473_availability-table.cs" />
+    <Compile Include="Migrations\202304020020473_availability-table.designer.cs">
+      <DependentUpon>202304020020473_availability-table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Availability.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Physician.cs" />
+    <Compile Include="Models\Volunteer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -290,6 +304,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303211442122_Departments.resx">
       <DependentUpon>202303211442122_Departments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303211617038_Volunteers.resx">
+      <DependentUpon>202303211617038_Volunteers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303262126589_Physicians-Departments.resx">
+      <DependentUpon>202303262126589_Physicians-Departments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304020020473_availability-table.resx">
+      <DependentUpon>202304020020473_availability-table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
