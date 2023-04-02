@@ -31,6 +31,8 @@ namespace hospital_project.Models
         public DbSet<Physician> Physicians { get; set; }
         //Departments Table
         public DbSet<Department> Departments { get; set; }
+        //Availabilities (PhysicianDepartments + Availability) Table
+        public DbSet<Availability> Availabilities { get; set; }
         //Volunteers Table
         public DbSet<Volunteer> Volunteers { get; set; }
 
