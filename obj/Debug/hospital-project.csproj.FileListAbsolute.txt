@@ -228,12 +228,11 @@ C:\Wenbo\Hospital\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Wenbo\Hospital\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Wenbo\Hospital\obj\Debug\hospital-project.csproj.AssemblyReference.cache
 C:\Wenbo\Hospital\obj\Debug\hospital_project.Migrations.InitialCreate.resources
-C:\Wenbo\Hospital\obj\Debug\hospital_project.Migrations.Physician.resources
-C:\Wenbo\Hospital\obj\Debug\hospital_project.Migrations.Departments.resources
-C:\Wenbo\Hospital\obj\Debug\hospital_project.Migrations.Volunteers.resources
 C:\Wenbo\Hospital\obj\Debug\hospital-project.csproj.GenerateResource.cache
 C:\Wenbo\Hospital\obj\Debug\hospital-project.csproj.CoreCompileInputs.cache
 C:\Wenbo\Hospital\obj\Debug\hospital-project.csproj.CopyComplete
 C:\Wenbo\Hospital\obj\Debug\hospital-project.dll
 C:\Wenbo\Hospital\obj\Debug\hospital-project.pdb
-C:\Wenbo\Hospital\obj\Debug\hospital_project.Migrations.Lab.resources
+C:\Wenbo\Hospital\obj\Debug\hospital_project.Migrations.researcher.resources
+C:\Wenbo\Hospital\obj\Debug\hospital_project.Migrations._1.resources
+C:\Wenbo\Hospital\obj\Debug\hospital_project.Migrations._2.resources

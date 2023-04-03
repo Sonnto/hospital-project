@@ -40,6 +40,11 @@ namespace hospital_project.Controllers
             LabDto SelectedLab = response.Content.ReadAsAsync<LabDto>().Result;
             ViewModel.SelectedLab = SelectedLab;
 
+            url = "projectdata/ListProjectsForLab/" + id;
+            response = client.GetAsync(url).Result;
+            IEnumerable<ProjectDto> RelatedProjects = response.Content.ReadAsAsync<IEnumerable<ProjectDto>>().Result;
+
+            ViewModel.RelatedProjects = RelatedProjects;
 
             return View(ViewModel);
         }

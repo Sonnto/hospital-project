@@ -15,10 +15,20 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model =>@model.SelectedLab.LabName)
+            @Html.DisplayFor(model => @model.SelectedLab.LabName)
         </dd>
 
     </dl>
+
+    <h2>Projects Related to Lab for @Model.SelectedLab.LabName:</h2>
+    @foreach (var project in Model.RelatedProjects)
+    {
+        <p>
+            <a href="/projects/Details/@project.ProjectId">@project.ProjectId </a>
+          
+        </p>
+    }
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.SelectedLab.LabId }) |

@@ -13,12 +13,24 @@ namespace hospital_project.Models
         [Key]
         public int ProjectId { get; set; }
         public string ProjectName { get; set; }
-
+        public ICollection<Lab> Lab { get; set; }
 
         [ForeignKey("Labs")]
 
         public int LabId { get; set; }
 
         public virtual Lab Labs { get; set; }
+        
+    }
+    public class ProjectDto
+    {
+        public int ProjectId { get; set; }
+        public string ProjectName { get; set; }
+
+        
+
+        public int LabId { get; set; }
+        public string LabName { get; set; }
+
     }
 }

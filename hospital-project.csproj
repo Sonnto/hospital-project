@@ -186,6 +186,10 @@
     <Compile Include="Controllers\LabController.cs" />
     <Compile Include="Controllers\LabDataController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProjectDataController.cs" />
+    <Compile Include="Controllers\ProjectsController.cs" />
+    <Compile Include="Controllers\ResearcherDataController.cs" />
+    <Compile Include="Controllers\ResearchersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -193,21 +197,17 @@
     <Compile Include="Migrations\202303211315387_InitialCreate.designer.cs">
       <DependentUpon>202303211315387_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202303211436399_Physician.cs" />
-    <Compile Include="Migrations\202303211436399_Physician.designer.cs">
-      <DependentUpon>202303211436399_Physician.cs</DependentUpon>
+    <Compile Include="Migrations\202304030615540_researcher.cs" />
+    <Compile Include="Migrations\202304030615540_researcher.designer.cs">
+      <DependentUpon>202304030615540_researcher.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202303211442122_Departments.cs" />
-    <Compile Include="Migrations\202303211442122_Departments.designer.cs">
-      <DependentUpon>202303211442122_Departments.cs</DependentUpon>
+    <Compile Include="Migrations\202304030711487_1.cs" />
+    <Compile Include="Migrations\202304030711487_1.designer.cs">
+      <DependentUpon>202304030711487_1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202303211617038_Volunteers.cs" />
-    <Compile Include="Migrations\202303211617038_Volunteers.designer.cs">
-      <DependentUpon>202303211617038_Volunteers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304010730073_Lab.cs" />
-    <Compile Include="Migrations\202304010730073_Lab.designer.cs">
-      <DependentUpon>202304010730073_Lab.cs</DependentUpon>
+    <Compile Include="Migrations\202304030742405_2.cs" />
+    <Compile Include="Migrations\202304030742405_2.designer.cs">
+      <DependentUpon>202304030742405_2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -290,9 +290,20 @@
     <Content Include="Views\LabData\Details.cshtml" />
     <Content Include="Views\LabData\Edit.cshtml" />
     <Content Include="Views\LabData\Index.cshtml" />
+    <Content Include="Views\Projects\Create.cshtml" />
+    <Content Include="Views\Projects\Delete.cshtml" />
+    <Content Include="Views\Projects\Details.cshtml" />
+    <Content Include="Views\Projects\Edit.cshtml" />
+    <Content Include="Views\Projects\Index.cshtml" />
+    <Content Include="Views\Researchers\Create.cshtml" />
+    <Content Include="Views\Researchers\Delete.cshtml" />
+    <Content Include="Views\Researchers\Details.cshtml" />
+    <Content Include="Views\Researchers\Edit.cshtml" />
+    <Content Include="Views\Researchers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Project\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -311,17 +322,14 @@
     <EmbeddedResource Include="Migrations\202303211315387_InitialCreate.resx">
       <DependentUpon>202303211315387_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303211436399_Physician.resx">
-      <DependentUpon>202303211436399_Physician.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202304030615540_researcher.resx">
+      <DependentUpon>202304030615540_researcher.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303211442122_Departments.resx">
-      <DependentUpon>202303211442122_Departments.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202304030711487_1.resx">
+      <DependentUpon>202304030711487_1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303211617038_Volunteers.resx">
-      <DependentUpon>202303211617038_Volunteers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304010730073_Lab.resx">
-      <DependentUpon>202304010730073_Lab.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202304030742405_2.resx">
+      <DependentUpon>202304030742405_2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
