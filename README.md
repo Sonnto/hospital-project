@@ -6,4 +6,6 @@ Hospital project for Humber College, Group 6 - recreate how the hospitals solve 
 - Department
 - Availability
 
-#
+# Ramin Fallahi
+
+# Ellis Chang
