@@ -237,3 +237,14 @@ C:\Users\Joan Beatrice\Documents\Hospital-Project\obj\Debug\hospital-project.pdb
 C:\Users\Joan Beatrice\Documents\Hospital-Project\obj\Debug\hospital_project.Migrations.Patient.resources
 C:\Users\Joan Beatrice\Documents\Hospital-Project\obj\Debug\hospital_project.Migrations.Appointment.resources
 C:\Users\Joan Beatrice\Documents\Hospital-Project\obj\Debug\hospital_project.Migrations.Patients.resources
+C:\Users\Joan Beatrice\Desktop\Hospital-Project-2\Hospital-Project\obj\Debug\hospital-project.csproj.AssemblyReference.cache
+C:\Users\Joan Beatrice\Desktop\Hospital-Project-2\Hospital-Project\obj\Debug\hospital_project.Migrations.InitialCreate.resources
+C:\Users\Joan Beatrice\Desktop\Hospital-Project-2\Hospital-Project\obj\Debug\hospital_project.Migrations.Physician.resources
+C:\Users\Joan Beatrice\Desktop\Hospital-Project-2\Hospital-Project\obj\Debug\hospital_project.Migrations.Departments.resources
+C:\Users\Joan Beatrice\Desktop\Hospital-Project-2\Hospital-Project\obj\Debug\hospital_project.Migrations.Patient.resources
+C:\Users\Joan Beatrice\Desktop\Hospital-Project-2\Hospital-Project\obj\Debug\hospital_project.Migrations.Appointment.resources
+C:\Users\Joan Beatrice\Desktop\Hospital-Project-2\Hospital-Project\obj\Debug\hospital_project.Migrations.Patients.resources
+C:\Users\Joan Beatrice\Desktop\Hospital-Project-2\Hospital-Project\obj\Debug\hospital-project.csproj.GenerateResource.cache
+C:\Users\Joan Beatrice\Desktop\Hospital-Project-2\Hospital-Project\obj\Debug\hospital-project.csproj.CoreCompileInputs.cache
+C:\Users\Joan Beatrice\Desktop\Hospital-Project-2\Hospital-Project\obj\Debug\hospital-project.dll
+C:\Users\Joan Beatrice\Desktop\Hospital-Project-2\Hospital-Project\obj\Debug\hospital-project.pdb

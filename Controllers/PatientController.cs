@@ -1,27 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
+using System.Diagnostics;
+using hospital_project.Models;
+using hospital_project.Models.ViewModels;
+using System.Web.Script.Serialization;
+
 
 namespace hospital_project.Controllers
 {
     public class PatientController : Controller
     {
-        // GET: Patient
-        public ActionResult Index()
+        // GET: Patient/List
+       
+        public ActionResult List()
         {
-            return View();
+            //objective: communicate with patient data api to retrieve a list of patients
+            //curl https:// api/patientdata/listpatients
+
+            string url = "patientdata/listpatients";
+            HttpResponseMessage response = Client.GetAsync(url).Result;
+
+            IEnumerable<PatientDto> patients = response.Content.ReadAsAsync<IEnumerable<PatientDto>>().Result;
+            return View(Patients);
         }
 
         // GET: Patient/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            DetailsPatient ViewModel = new DetailsPatient();
+            //objective: communicate with patient data api to retrieve a list of patients
+            //curl https:// api/patientdata/findpatient/{id}
+
+            string url = "patientdata/findpatient/" + id;
+            HttpResponseMessage response = Client.GetAsync(Url).Result;
+
+            PatientDto SelectedPatient = response.Content.ReadAsAsync<PatientDto>().Result;
+
+            ViewModel.SelectedPatient = SelectedPatient;
+
+            return View(ViewModel);
         }
 
-        // GET: Patient/Create
-        public ActionResult Create()
+        //POST: Patient/Associate/{patientid}
+        [HttpPost]
+        [Authorize]
+        public ActionResult(int id, int AppointmentID)
+        {
+            return RedirectToAction("Details/" + id);
+        }
+
+        // GET: Patient/New
+        [Authorize]
+
+        public ActionResult New()
         {
             return View();
         }
