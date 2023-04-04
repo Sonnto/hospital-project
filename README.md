@@ -9,3 +9,6 @@ Hospital project for Humber College, Group 6 - recreate how the hospitals solve 
 # Ramin Fallahi
 
 # Ellis Chang
+- Schedule
+- Volunteer
+- Department (shared)
