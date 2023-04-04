@@ -13,8 +13,9 @@ namespace hospital_project.Models
         [Key]
         public int ProjectId { get; set; }
         public string ProjectName { get; set; }
-        public ICollection<Lab> Lab { get; set; }
-
+       public ICollection<Lab> Lab { get; set; }
+        //Hi Christine, I know the ForeignKey should be Single as Lab and public virtual should also be single
+        //But after I update and correct them, it keeps have bugs
         [ForeignKey("Labs")]
 
         public int LabId { get; set; }

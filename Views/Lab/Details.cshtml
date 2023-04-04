@@ -20,11 +20,11 @@
 
     </dl>
 
-    <h2>Projects Related to Lab for @Model.SelectedLab.LabName:</h2>
+    <h4>Projects Related to Lab for @Model.SelectedLab.LabName:</h4>
     @foreach (var project in Model.RelatedProjects)
     {
         <p>
-            <a href="/projects/Details/@project.ProjectId">@project.ProjectId </a>
+            <a href="/projects/Details/@project.ProjectId">@project.ProjectName </a>
           
         </p>
     }

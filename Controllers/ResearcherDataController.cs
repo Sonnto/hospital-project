@@ -16,6 +16,8 @@ namespace hospital_project.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        //Hi, Christine, I learned the C# and the ASP.NEP framewrok in another Online course,
+        //So for the ResearchDataControllor and part of ResearchController, the method it maybe little different than you taught us
         // GET: api/ResearcherData
         public IQueryable<Researcher> GetResearchers()
         {
@@ -34,6 +36,7 @@ namespace hospital_project.Controllers
 
             return Ok(researcher);
         }
+
 
         // PUT: api/ResearcherData/5
         [ResponseType(typeof(void))]

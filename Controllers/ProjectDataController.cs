@@ -17,6 +17,8 @@ namespace hospital_project.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        //Hi, Christine, I learned the C# and the ASP.NEP framewrok in another Online course,
+        //So for the ResearchDataControllor and part of ResearchController, the method it maybe little different than you taught us
         // GET: api/ProjectData/ListProjects
         public IHttpActionResult ListProjects()
         {
@@ -39,10 +41,7 @@ namespace hospital_project.Controllers
         [ResponseType(typeof(ProjectDto))]
         public IHttpActionResult ListProjectsForLab(int id)
         {
-            List<Project> Projects = db.Projects.Where(
-                 m => m.Lab.Any(
-                     a => a.LabId == id)
-                 ).ToList();
+            List<Project> Projects = db.Projects.Where(p=>p.LabId==id).ToList();
             List<ProjectDto> ProjectDtos = new List<ProjectDto>();
 
             Projects.ForEach(m => ProjectDtos.Add(new ProjectDto()
