@@ -7,6 +7,9 @@ Hospital project for Humber College, Group 6 - recreate how the hospitals solve 
 - Availability
 
 # Ramin Fallahi
+- Lots
+- Fees
+- Booking (M2M)
 
 # Ellis Chang
 - Schedule
