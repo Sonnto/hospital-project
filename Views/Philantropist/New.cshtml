@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Philantropist</h2>
+<form action="/Philantropist/Create" method="POST">
+    <div>
+        <label>First Name:</label>
+        <input type="text" name="PhilantropistFirstName" />
+    </div>
+    <div>
+        <label>Last Name:</label>
+        <input type="text" name="PhilantropistLastName" />
+    </div>
+    <div>
+        <label>Company:</label>
+        <input type="text" name="Company" />
+    </div>
+    <div>
+        <label>Donation Tier</label>
+        <input type="number" name="DonationID" />
+    </div>
+    <div>
+        <input type="submit" value="Add Philantropist" />
+    </div>
+</form>

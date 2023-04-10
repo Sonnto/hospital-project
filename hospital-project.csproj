@@ -26,6 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,17 +50,15 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -103,6 +102,7 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -184,6 +184,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PhilantropistController.cs" />
+    <Compile Include="Controllers\PhilantropistDataController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -211,14 +213,37 @@
     <Compile Include="Migrations\202304020020473_availability-table.designer.cs">
       <DependentUpon>202304020020473_availability-table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202304070115434_VolunteerShift-table.cs" />
+    <Compile Include="Migrations\202304070115434_VolunteerShift-table.designer.cs">
+      <DependentUpon>202304070115434_VolunteerShift-table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304082127317_philantropists.cs" />
+    <Compile Include="Migrations\202304082127317_philantropists.designer.cs">
+      <DependentUpon>202304082127317_philantropists.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304082157379_Donation.cs" />
+    <Compile Include="Migrations\202304082157379_Donation.designer.cs">
+      <DependentUpon>202304082157379_Donation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304082207571_Philantropist-Donation-FK.cs" />
+    <Compile Include="Migrations\202304082207571_Philantropist-Donation-FK.designer.cs">
+      <DependentUpon>202304082207571_Philantropist-Donation-FK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304082217006_philantropists-departments.cs" />
+    <Compile Include="Migrations\202304082217006_philantropists-departments.designer.cs">
+      <DependentUpon>202304082217006_philantropists-departments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Availability.cs" />
     <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Donation.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Philantropist.cs" />
     <Compile Include="Models\Physician.cs" />
     <Compile Include="Models\Volunteer.cs" />
+    <Compile Include="Models\VolunteerShift.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -231,6 +256,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <None Include="jsondata\philantropist.json" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -278,10 +304,12 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Philantropist\List.cshtml" />
+    <Content Include="Views\Philantropist\Details.cshtml" />
+    <Content Include="Views\Philantropist\New.cshtml" />
+    <Content Include="Views\Philantropist\Error.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -313,6 +341,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202304020020473_availability-table.resx">
       <DependentUpon>202304020020473_availability-table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304070115434_VolunteerShift-table.resx">
+      <DependentUpon>202304070115434_VolunteerShift-table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304082127317_philantropists.resx">
+      <DependentUpon>202304082127317_philantropists.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304082157379_Donation.resx">
+      <DependentUpon>202304082157379_Donation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304082207571_Philantropist-Donation-FK.resx">
+      <DependentUpon>202304082207571_Philantropist-Donation-FK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304082217006_philantropists-departments.resx">
+      <DependentUpon>202304082217006_philantropists-departments.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

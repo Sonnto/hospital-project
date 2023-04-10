@@ -14,5 +14,8 @@ namespace hospital_project.Models
 
         //A department can have multiple physicians associated with them
         public ICollection<Physician> Physicians{ get; set; }
+
+        //A department can recieve donations from many philantropists
+        public ICollection<Philantropist> Philantropists{ get; set; }
     }
 }

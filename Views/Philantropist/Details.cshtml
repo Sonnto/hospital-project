@@ -1,0 +1,12 @@
+﻿@model hospital_project.Models.PhilantropistDto 
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<a href="/Philantropist/List">Go back to list</a>
+<h2>@Model.PhilantropistFirstName @Model.PhilantropistLastName</h2>
+<div>Company: @Model.Company</div>
+<div>Donation Tier: @Model.DonationID</div>
+
+

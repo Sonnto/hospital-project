@@ -36,6 +36,11 @@ namespace hospital_project.Models
         //Volunteers Table
         public DbSet<Volunteer> Volunteers { get; set; }
 
+        public DbSet<VolunteerShift> VolunteerShifts { get; set; }
+
+        public DbSet<Philantropist> Philantropists { get; set; }
+
+        public DbSet<Donation> Donations { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

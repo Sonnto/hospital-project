@@ -1,0 +1,13 @@
+﻿@model IEnumerable<hospital_project.Models.PhilantropistDto>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+@foreach (var philantropist in Model)
+{
+    <h2><a href="/Philantropist/Details/@philantropist.PhilantropistID">@philantropist.PhilantropistFirstName @philantropist.PhilantropistLastName</a></h2>
+    <div>Company: @philantropist.Company</div>
+     <div>Donation Tier: @philantropist.DonationID</div>
+}
