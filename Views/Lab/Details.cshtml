@@ -1,0 +1,37 @@
+﻿@model hospital_project.Models.ViewModels.DetailsLab
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View Lab Details</h2>
+
+<div>
+    <h4>Lab @Model.SelectedLab.LabId</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SelectedLab.LabName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => @model.SelectedLab.LabName)
+        </dd>
+
+    </dl>
+
+    <h4>Projects Related to Lab for @Model.SelectedLab.LabName:</h4>
+    @foreach (var project in Model.RelatedProjects)
+    {
+        <p>
+            <a href="/projects/Details/@project.ProjectId">@project.ProjectName </a>
+          
+        </p>
+    }
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SelectedLab.LabId }) |
+    @Html.ActionLink("Delete", "DeleteConfirm", new { id = Model.SelectedLab.LabId }) |
+    @Html.ActionLink("Back to List", "/List")
+</p>

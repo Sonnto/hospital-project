@@ -35,6 +35,9 @@ namespace hospital_project.Models
         public DbSet<Availability> Availabilities { get; set; }
         //Volunteers Table
         public DbSet<Volunteer> Volunteers { get; set; }
+        public DbSet<Researcher> Researchers { get; set; }
+        public DbSet<Lab> Labs { get; set; }
+        public DbSet<Project> Projects { get; set; }
 
         public static ApplicationDbContext Create()
         {
