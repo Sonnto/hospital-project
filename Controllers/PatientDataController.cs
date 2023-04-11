@@ -61,7 +61,7 @@ namespace hospital_project.Controllers
 
         // PUT: api/PatientData/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutPatient(int id, Patient patient)
+        public IHttpActionResult UpdatePatient(int id, Patient patient)
         {
             if (!ModelState.IsValid)
             {
