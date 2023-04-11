@@ -23,7 +23,7 @@ namespace hospital_project.Models
 
         [ForeignKey("Physician")]
         
-        public string primary_physician_id { get; set; }
+        public int primary_physician_id { get; set; }
     }
         public class PatientDto { 
         
@@ -41,6 +41,6 @@ namespace hospital_project.Models
 
         public string patient_condition { get; set; }
 
-        public string primary_physician_id { get; set; }
+        public int primary_physician_id { get; set; }
     }
 }
