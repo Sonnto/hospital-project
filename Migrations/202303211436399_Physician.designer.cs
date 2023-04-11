@@ -7,13 +7,13 @@ namespace hospital_project.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class _1 : IMigrationMetadata
+    public sealed partial class Physician : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(_1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Physician));
         
         string IMigrationMetadata.Id
         {
-            get { return "202304030711487_1"; }
+            get { return "202303211436399_Physician"; }
         }
         
         string IMigrationMetadata.Source
