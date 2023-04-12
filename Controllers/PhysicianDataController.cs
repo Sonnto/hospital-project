@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Xml.Linq;
 using hospital_project.Models;
 
 namespace hospital_project.Controllers
@@ -32,6 +34,49 @@ namespace hospital_project.Controllers
             }));
 
             return PhysicianDtos;
+        }
+
+        // GET: api/PhysicianData/ListPhysiciansForDepartment
+        [HttpGet]
+        [ResponseType(typeof(PhysicianDto))]
+        public IHttpActionResult ListPhysiciansForDepartment(int id)
+        {
+            //ask physician that have departments that match ID
+            List<Physician> Physicians = db.Physicians.Where(p=>p.Departments.Any(d=>d.department_id==id)).ToList();
+            List<PhysicianDto> PhysicianDtos = new List<PhysicianDto>();
+            Physicians.ForEach(p=>PhysicianDtos.Add(new PhysicianDto(){
+                physician_id = p.physician_id ,
+                first_name =p.first_name,
+                last_name=p.last_name,
+                email=p.email,
+            }));
+
+            return Ok(PhysicianDtos);
+        }
+
+        // POST: api/PhysicianData/AssociatePhysicianWithDepartment/{physician_id}/{department_d}
+        [HttpPost]
+        [Route("api/PhysicianData/AssociatePhysicianWithDepartment/{physician_id}/{department_id}")]
+        public IHttpActionResult AssociatePhysicianWithDepartment(int physician_id, int department_id)
+        {
+            Physician SelectedPhysician = db.Physicians.Include
+                (p => p.Departments).Where
+                (p => p.physician_id == physician_id).FirstOrDefault();
+            Department SelectedDepartment = db.Departments.Find(department_id);
+
+            if (SelectedPhysician == null || SelectedDepartment == null)
+            {
+                return NotFound();
+            }
+            Debug.WriteLine("Input physician id is: " + physician_id);
+            Debug.WriteLine("Selected physician name is: " + SelectedPhysician.first_name + SelectedPhysician.last_name);
+            Debug.WriteLine("Input department id to be added: " + department_id);
+            Debug.WriteLine("Selected department name to be added: " + SelectedDepartment.department_name);
+
+            SelectedPhysician.Departments.Add(SelectedDepartment);
+            db.SaveChanges();
+
+            return Ok();
         }
 
         // GET: api/PhysicianData/FindPhysician/5
@@ -60,13 +105,18 @@ namespace hospital_project.Controllers
         [HttpPost]
         public IHttpActionResult UpdatePhysician(int id, Physician physician)
         {
+            Debug.WriteLine("I have reached the update physician method");
             if (!ModelState.IsValid)
             {
+                Debug.WriteLine("Model State is invalid");
                 return BadRequest(ModelState);
             }
 
             if (id != physician.physician_id)
             {
+                Debug.WriteLine("ID mismatch");
+                Debug.WriteLine("GET parameter" + id);
+                Debug.WriteLine("POST parameter" + physician.physician_id);
                 return BadRequest();
             }
 

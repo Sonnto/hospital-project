@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using hospital_project.Models;
+using System.Diagnostics;
 
 namespace hospital_project.Controllers
 {
@@ -43,11 +44,11 @@ namespace hospital_project.Controllers
             Availability Availability = db.Availabilities.Find(id);
             AvailabilityDto AvailabilityDto = new AvailabilityDto()
             {
-                availability_id=Availability.availability_id,
-                physician_first_name=Availability.Physicians.first_name,
-                physician_last_name=Availability.Physicians.last_name,
-                department_name=Availability.Departments.department_name,
-                physician_email=Availability.Physicians.email,
+                availability_id = Availability.availability_id,
+                physician_first_name = Availability.Physicians.first_name,
+                physician_last_name = Availability.Physicians.last_name,
+                department_name = Availability.Departments.department_name,
+                physician_email = Availability.Physicians.email,
                 availability_dates = Availability.availability_dates,
             };
             if (Availability == null)
@@ -56,38 +57,25 @@ namespace hospital_project.Controllers
             }
 
             return Ok(AvailabilityDto);
-        } //FIX THE REST UNDER HERE AROUND 11:00
-
-        // GET: api/Availabilities
-        public IQueryable<Availability> GetAvailabilities()
-        {
-            return db.Availabilities;
         }
 
-        // GET: api/Availabilities/5
-        [ResponseType(typeof(Availability))]
-        public IHttpActionResult GetAvailability(int id)
-        {
-            Availability availability = db.Availabilities.Find(id);
-            if (availability == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(availability);
-        }
-
-        // PUT: api/Availabilities/5
+        // Post: api/AvailabilityData/UpdateAvailability/5
         [ResponseType(typeof(void))]
+        [HttpPost]
         public IHttpActionResult PutAvailability(int id, Availability availability)
         {
+            Debug.WriteLine("I have reached the update availability method");
             if (!ModelState.IsValid)
             {
+                Debug.WriteLine("Model state is invalid");
                 return BadRequest(ModelState);
             }
 
             if (id != availability.availability_id)
             {
+                Debug.WriteLine("ID mismatch");
+                Debug.WriteLine("GET parameter" + id);
+                Debug.WriteLine("POST parameter" + availability.availability_id);
                 return BadRequest();
             }
 
@@ -101,6 +89,7 @@ namespace hospital_project.Controllers
             {
                 if (!AvailabilityExists(id))
                 {
+                    Debug.WriteLine("Availability not found");
                     return NotFound();
                 }
                 else
@@ -109,10 +98,11 @@ namespace hospital_project.Controllers
                 }
             }
 
+            Debug.WriteLine("None of the conditions triggered");
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Availabilities
+        // POST: api/AvailabilityData/AddAvailability/5
         [ResponseType(typeof(Availability))]
         public IHttpActionResult PostAvailability(Availability availability)
         {
@@ -127,7 +117,7 @@ namespace hospital_project.Controllers
             return CreatedAtRoute("DefaultApi", new { id = availability.availability_id }, availability);
         }
 
-        // DELETE: api/Availabilities/5
+        // POST: api/AvailabilityData/DeleteAvailability/5
         [ResponseType(typeof(Availability))]
         public IHttpActionResult DeleteAvailability(int id)
         {
@@ -140,7 +130,7 @@ namespace hospital_project.Controllers
             db.Availabilities.Remove(availability);
             db.SaveChanges();
 
-            return Ok(availability);
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)
