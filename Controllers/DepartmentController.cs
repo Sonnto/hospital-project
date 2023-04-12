@@ -1,92 +1,89 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
-using System.Net.Http;
-using System.Diagnostics;
-using hospital_project.Models;
 using System.Web.Script.Serialization;
+using hospital_project.Models;
 using hospital_project.Models.ViewModels;
-using System.Globalization;
-using System.Xml.Linq;
 
 namespace hospital_project.Controllers
 {
-    public class PhysicianController : Controller
+    public class DepartmentController : Controller
     {
         private static readonly HttpClient client;
         JavaScriptSerializer jss = new JavaScriptSerializer();
 
 
-        static PhysicianController()
+        static DepartmentController()
         {
             client = new HttpClient();
             client.BaseAddress = new Uri("https://localhost:44324/api/");
         }
-        // GET: Physician/List
+        // GET: Department/List
         public ActionResult List()
         {
-            //Objective: communicate with our physician data API to retrieve a list of physicians
-            //curl https://localhost:44324/api/physicianedata/listphysicians
+            //Objective: communicate with our department data API to retrieve a list of departments
+            //curl https://localhost:44324/api/departmentdata/listdepartments
 
-            string url = "PhysicianData/ListPhysicians";
+            string url = "DepartmentData/ListDepartments";
             HttpResponseMessage response = client.GetAsync(url).Result;
 
             Debug.WriteLine("The response code is ");
             Debug.WriteLine(response.StatusCode);
 
-            IEnumerable<PhysicianDto> physicians = response.Content.ReadAsAsync<IEnumerable<PhysicianDto>>().Result;
-            Debug.WriteLine("Number of anime received: ");
-            Debug.WriteLine(physicians.Count());
+            IEnumerable<Models.DepartmentDto> departments = response.Content.ReadAsAsync<IEnumerable<DepartmentDto>>().Result;
+            Debug.WriteLine("Number of departments received: ");
+            Debug.WriteLine(departments.Count());
 
 
-            return View(physicians);
+            return View(departments);
         }
 
-        // GET: Physician/Details/5
+        // GET: Department/Details/5
         public ActionResult Details(int id)
         {
-            DetailsPhysician ViewModel = new DetailsPhysician();
+            DetailsDepartment ViewModel = new DetailsDepartment();
 
-            //Objective: communicate with our anime data API to retrieve a specific anime
-            //curl https://localhost:44383/api/physiciandata/findphysician/{id}
+            //Objective: communicate with our department data API to retrieve a specific anime
+            //curl https://localhost:44383/api/departmentdata/finddepartment/{id}
 
-            string url = "PhysicianData/FindPhysician/" + id;
+            string url = "DepartmentData/FindDepartment/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
 
             Debug.WriteLine("The response code is ");
             Debug.WriteLine(response.StatusCode);
 
-            PhysicianDto SelectedPhysician = response.Content.ReadAsAsync<PhysicianDto>().Result;
+            DepartmentDto SelectedDepartment = response.Content.ReadAsAsync<DepartmentDto>().Result;
 
-            ViewModel.SelectedPhysician = SelectedPhysician;
+            ViewModel.SelectedDepartment = SelectedDepartment;
 
             //show associated genres with this anime between here
 
-            url = "DepartmentData/ListDepartmentsForPhysician/" + id;
+            url = "PhysicianData/ListPhysiciansForDepartment/" + id;
             response = client.GetAsync(url).Result;
-            IEnumerable<DepartmentDto> TaggedDepartments = response.Content.ReadAsAsync<IEnumerable<DepartmentDto>>().Result;
+            IEnumerable<PhysicianDto> TaggedPhysicians = response.Content.ReadAsAsync<IEnumerable<PhysicianDto>>().Result;
 
-            ViewModel.TaggedDepartments = TaggedDepartments;
+            ViewModel.TaggedPhysicians = TaggedPhysicians;
 
-            url = "DepartmentData/ListDepartmentsNotForPhysician/" + id;
+            url = "PhysicianData/ListPhysiciansNotForDepartment/" + id;
             response = client.GetAsync(url).Result;
-            IEnumerable<DepartmentDto> AvailableDepartments = response.Content.ReadAsAsync<IEnumerable<DepartmentDto>>().Result;
+            IEnumerable<PhysicianDto> AvailablePhysicians = response.Content.ReadAsAsync<IEnumerable<PhysicianDto>>().Result;
 
-            ViewModel.AvailableDepartments = AvailableDepartments;
+            ViewModel.AvailablePhysicians = AvailablePhysicians;
 
             return View(ViewModel);
         }
-
-        //POST: Physician/Associate/{physician_id}
+        //POST: Department/Associate/{department_id}
         [HttpPost]
 
-        public ActionResult Associate(int id, int department_id)
+        public ActionResult Associate(int id, int physician_id)
         {
-            Debug.WriteLine("Attempting to associate physician: " + id + " with department: " + department_id);
-            //call API to associate physician with department
-            string url = "PhysicianData/AssociatePhysicianWithDepartment/" + id + "/" + department_id;
+            Debug.WriteLine("Attempting to associate department: " + id + " with physician: " + physician_id);
+            //call API to associate department with physician
+            string url = "DepartmentData/AssociateDepartmentWithPhysician/" + id + "/" + physician_id;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;
@@ -94,14 +91,14 @@ namespace hospital_project.Controllers
             return RedirectToAction("Details/" + id);
         }
 
-        //Get: Physician/UnAssociate/{id}?department_id={department_id}
+        //Get: Department/UnAssociate/{id}?physician_id={physician_id}
         [HttpGet]
 
-        public ActionResult UnAssociate(int id, int department_id)
+        public ActionResult UnAssociate(int id, int physician_id)
         {
-            Debug.WriteLine("Attempting to unassociate physician: " + id + " with department: " + department_id);
-            //call API to unassociate physician with department
-            string url = "PhysicianData/UnassociatePhysicianWithDepartment/" + id + "/" + department_id;
+            Debug.WriteLine("Attempting to unassociate department: " + id + " with physician: " + physician_id);
+            //call API to unassociate department with physician
+            string url = "DepartmentData/UnassociateDepartmentWithPhysician/" + id + "/" + physician_id;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;
@@ -114,19 +111,7 @@ namespace hospital_project.Controllers
             return View();
         }
 
-        // vvvv THIS PART DOES NOT SEEM TO BE NEEDED vvvv
-        public ActionResult New()
-        {
-            //Information about Anime Types and Genres
-
-            string url = "animetypedata/listanimetypes";
-            HttpResponseMessage response = client.GetAsync(url).Result;
-            IEnumerable<AnimeTypeDto> animeTypesOptions = response.Content.ReadAsAsync<IEnumerable<AnimeTypeDto>>().Result;
-
-            return View(animeTypesOptions);
-        }
-
-        // ^^^^ THIS PART DOES NOT SEEM TO BE NEEDED ^^^^
+        //HEREEEE CONTINUEEE HEREEEEEEEE
 
         // POST: Physician/Create
         [HttpPost]
@@ -160,7 +145,7 @@ namespace hospital_project.Controllers
             }
         }
 
-        // GET: Physician/Edit/5
+        // GET: Anime/Edit/5
         [HttpGet]
         public ActionResult Edit(int id)
         {
@@ -172,7 +157,7 @@ namespace hospital_project.Controllers
             HttpResponseMessage response = client.GetAsync(url).Result;
             PhysicianDto SelectedPhysician = response.Content.ReadAsAsync<PhysicianDto>().Result;
 
-            Debug.WriteLine("PhysicianController.cs: SelectedPhysician's anime_type_id: " + SelectedPhysician.first_name +" " + SelectedPhysician.last_name);
+            Debug.WriteLine("PhysicianController.cs: SelectedPhysician's anime_type_id: " + SelectedPhysician.first_name + " " + SelectedPhysician.last_name);
             Debug.WriteLine("PhysicianController.cs: Physician id for edit is: " + id);
 
             ViewModel.SelectedPhysician = SelectedPhysician;
@@ -244,5 +229,4 @@ namespace hospital_project.Controllers
                 return RedirectToAction("Error");
             }
         }
-    }
 }

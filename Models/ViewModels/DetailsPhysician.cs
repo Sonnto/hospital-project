@@ -12,4 +12,3 @@ namespace hospital_project.Models.ViewModels
         public IEnumerable<DepartmentDto> AvailableDepartments { get; set; }
     }
 }
-}
