@@ -80,7 +80,7 @@ namespace hospital_project.Controllers
         }
         // vvvv ======== NOT SURE IF Associate AND UnAssociate ACTIONS ARE NEEDED ======== vvvv
 
-        // May not need because you don't associate an availability; it will be manually entered and updated by the user; it will be a string, not an integar usually one capital letter, followed by a lower case letter to denote one of the seven days in any combination: i.e. Mo, Tu, We, Th, Fr, Sa, Su)
+        // May not need because you don't associate an availability; it will be manually entered and updated by the user; it will be a string, not an integar usually one capital letter, followed by a lower case letter to denote one of the seven days in any combination: i.e. Mo, Tu, We, Th, Fr, Sa, Su) - therefore, may delete actions that may not be needed
 
         //POST: Availability/Associate/{physician_id}
         [HttpPost]
@@ -119,7 +119,7 @@ namespace hospital_project.Controllers
 
         // ^^^^ ======== NOT SURE IF Associate AND UnAssociate ACTIONS ARE NEEDED ======== ^^^^
 
-        // vvvv ======== NOT SURE IF Create ABILITY NEEDED ======== vvvv
+        // vvvv ======== NOT SURE IF Create ACTION NEEDED ======== vvvv
 
         //May not be needed because availability_date is not a pre-set but a string the user can be said and there is no "list of availabilities"
 
@@ -155,7 +155,7 @@ namespace hospital_project.Controllers
             }
         }
 
-        // ^^^^ ======== NOT SURE IF Create ABILITY NEEDED ======== ^^^^
+        // ^^^^ ======== NOT SURE IF Create ACTION NEEDED ======== ^^^^
 
 
         // GET: Availability/Edit/5
