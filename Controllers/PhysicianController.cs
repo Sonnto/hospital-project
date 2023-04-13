@@ -37,7 +37,7 @@ namespace hospital_project.Controllers
             Debug.WriteLine(response.StatusCode);
 
             IEnumerable<PhysicianDto> physicians = response.Content.ReadAsAsync<IEnumerable<PhysicianDto>>().Result;
-            Debug.WriteLine("Number of anime received: ");
+            Debug.WriteLine("Number of physicians received: ");
             Debug.WriteLine(physicians.Count());
 
 
@@ -49,7 +49,7 @@ namespace hospital_project.Controllers
         {
             DetailsPhysician ViewModel = new DetailsPhysician();
 
-            //Objective: communicate with our anime data API to retrieve a specific anime
+            //Objective: communicate with our physician data API to retrieve a specific physician
             //curl https://localhost:44383/api/physiciandata/findphysician/{id}
 
             string url = "PhysicianData/FindPhysician/" + id;
@@ -62,7 +62,7 @@ namespace hospital_project.Controllers
 
             ViewModel.SelectedPhysician = SelectedPhysician;
 
-            //show associated genres with this anime between here
+            //show associated departments with this physician between here
 
             url = "DepartmentData/ListDepartmentsForPhysician/" + id;
             response = client.GetAsync(url).Result;
@@ -114,20 +114,6 @@ namespace hospital_project.Controllers
             return View();
         }
 
-        // vvvv THIS PART DOES NOT SEEM TO BE NEEDED vvvv
-        public ActionResult New()
-        {
-            //Information about Anime Types and Genres
-
-            string url = "animetypedata/listanimetypes";
-            HttpResponseMessage response = client.GetAsync(url).Result;
-            IEnumerable<AnimeTypeDto> animeTypesOptions = response.Content.ReadAsAsync<IEnumerable<AnimeTypeDto>>().Result;
-
-            return View(animeTypesOptions);
-        }
-
-        // ^^^^ THIS PART DOES NOT SEEM TO BE NEEDED ^^^^
-
         // POST: Physician/Create
         [HttpPost]
         public ActionResult Create(Physician physician)
@@ -137,7 +123,7 @@ namespace hospital_project.Controllers
             Debug.WriteLine("The inputted physician name is: ");
             Debug.WriteLine(physician.first_name + physician.last_name);
             //Objective: add a new physician into our system using the API
-            //curl -H "Content-Type:application/json" -d anime.json https://localhost:44324/api/physiciandata/addphysician
+            //curl -H "Content-Type:application/json" -d physician.json https://localhost:44324/api/physiciandata/addphysician
             string url = "PhysicianData/AddPhysician";
 
             string jsonpayload = jss.Serialize(physician);
@@ -172,25 +158,10 @@ namespace hospital_project.Controllers
             HttpResponseMessage response = client.GetAsync(url).Result;
             PhysicianDto SelectedPhysician = response.Content.ReadAsAsync<PhysicianDto>().Result;
 
-            Debug.WriteLine("PhysicianController.cs: SelectedPhysician's anime_type_id: " + SelectedPhysician.first_name +" " + SelectedPhysician.last_name);
+            Debug.WriteLine("PhysicianController.cs: SelectedPhysician's full name: " + SelectedPhysician.first_name +" " + SelectedPhysician.last_name);
             Debug.WriteLine("PhysicianController.cs: Physician id for edit is: " + id);
 
             ViewModel.SelectedPhysician = SelectedPhysician;
-
-
-            // vvvvv THIS PART DOES NOT SEEM TO BE NEEDED vvvvv
-
-            //also include all animeTypes to choose from when updating this anime
-            url = "animetypedata/listanimetypes/";
-            response = client.GetAsync(url).Result;
-            IEnumerable<AnimeTypeDto> AnimeTypesOptions = response.Content.ReadAsAsync<IEnumerable<AnimeTypeDto>>().Result;
-
-            Debug.WriteLine("AnimeController.cs: AnimeTypesOptions: " + AnimeTypesOptions);
-
-            ViewModel.AnimeTypesOptions = AnimeTypesOptions;
-
-            // ^^^^ THIS PART DOES NOT SEEM TO BE NEEDED ^^^^
-
             return View(ViewModel);
         }
 

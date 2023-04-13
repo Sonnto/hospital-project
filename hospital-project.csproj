@@ -187,6 +187,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\DepartmentDataController.cs" />
+    <Compile Include="Controllers\AvailabilityController.cs" />
     <Compile Include="Controllers\PhysicianController.cs" />
     <Compile Include="Controllers\PhysicianDataController.cs" />
     <Compile Include="Global.asax.cs">
@@ -222,9 +223,12 @@
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Date.cs" />
     <Compile Include="Models\Physician.cs" />
+    <Compile Include="Models\ViewModels\DetailsAvailability.cs" />
     <Compile Include="Models\ViewModels\DetailsDepartment.cs" />
     <Compile Include="Models\ViewModels\DetailsPhysician.cs" />
+    <Compile Include="Models\ViewModels\UpdateDepartment.cs" />
     <Compile Include="Models\ViewModels\UpdatePhysician.cs" />
     <Compile Include="Models\Volunteer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -23,5 +23,10 @@ namespace hospital_project.Models
 
         //A department can have multiple physicians associated with them
         public ICollection<Physician> Physicians { get; set; }
+
+        public static implicit operator DepartmentDto(AvailabilityDto v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

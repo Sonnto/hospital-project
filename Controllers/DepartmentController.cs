@@ -47,7 +47,7 @@ namespace hospital_project.Controllers
         {
             DetailsDepartment ViewModel = new DetailsDepartment();
 
-            //Objective: communicate with our department data API to retrieve a specific anime
+            //Objective: communicate with our department data API to retrieve a specific department
             //curl https://localhost:44383/api/departmentdata/finddepartment/{id}
 
             string url = "DepartmentData/FindDepartment/" + id;
@@ -60,7 +60,7 @@ namespace hospital_project.Controllers
 
             ViewModel.SelectedDepartment = SelectedDepartment;
 
-            //show associated genres with this anime between here
+            //show associated physicians with this department between here
 
             url = "PhysicianData/ListPhysiciansForDepartment/" + id;
             response = client.GetAsync(url).Result;
@@ -113,19 +113,19 @@ namespace hospital_project.Controllers
 
         //HEREEEE CONTINUEEE HEREEEEEEEE
 
-        // POST: Physician/Create
+        // POST: Department/Create
         [HttpPost]
-        public ActionResult Create(Physician physician)
+        public ActionResult Create(Department department)
         {
             // Parses dates from input string
 
-            Debug.WriteLine("The inputted physician name is: ");
-            Debug.WriteLine(physician.first_name + physician.last_name);
-            //Objective: add a new physician into our system using the API
-            //curl -H "Content-Type:application/json" -d anime.json https://localhost:44324/api/physiciandata/addphysician
-            string url = "PhysicianData/AddPhysician";
+            Debug.WriteLine("The inputted department name is: ");
+            Debug.WriteLine(department.department_name);
+            //Objective: add a new department into our system using the API
+            //curl -H "Content-Type:application/json" -d department.json https://localhost:44324/api/departmentdata/adddepartment
+            string url = "DepartmentData/AddDepartment";
 
-            string jsonpayload = jss.Serialize(physician);
+            string jsonpayload = jss.Serialize(department);
 
             Debug.WriteLine(jsonpayload);
 
@@ -145,46 +145,31 @@ namespace hospital_project.Controllers
             }
         }
 
-        // GET: Anime/Edit/5
+        // GET: Department/Edit/5
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            UpdatePhysician ViewModel = new UpdatePhysician();
+            UpdateDepartment ViewModel = new UpdateDepartment();
 
-            //the existing physician information
+            //the existing department information
 
-            string url = "PhysicianData/FindPhysician/" + id;
+            string url = "DepartmentData/FindDepartment/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
-            PhysicianDto SelectedPhysician = response.Content.ReadAsAsync<PhysicianDto>().Result;
+            DepartmentDto SelectedDepartment = response.Content.ReadAsAsync<DepartmentDto>().Result;
 
-            Debug.WriteLine("PhysicianController.cs: SelectedPhysician's anime_type_id: " + SelectedPhysician.first_name + " " + SelectedPhysician.last_name);
-            Debug.WriteLine("PhysicianController.cs: Physician id for edit is: " + id);
+            Debug.WriteLine("DepartmentController.cs: SelectedDepartment's department name: " + SelectedDepartment.department_name);
+            Debug.WriteLine("DepartmentController.cs: Department id for edit is: " + id);
 
-            ViewModel.SelectedPhysician = SelectedPhysician;
-
-
-            // vvvvv THIS PART DOES NOT SEEM TO BE NEEDED vvvvv
-
-            //also include all animeTypes to choose from when updating this anime
-            url = "animetypedata/listanimetypes/";
-            response = client.GetAsync(url).Result;
-            IEnumerable<AnimeTypeDto> AnimeTypesOptions = response.Content.ReadAsAsync<IEnumerable<AnimeTypeDto>>().Result;
-
-            Debug.WriteLine("AnimeController.cs: AnimeTypesOptions: " + AnimeTypesOptions);
-
-            ViewModel.AnimeTypesOptions = AnimeTypesOptions;
-
-            // ^^^^ THIS PART DOES NOT SEEM TO BE NEEDED ^^^^
-
+            ViewModel.SelectedDepartment = SelectedDepartment;
             return View(ViewModel);
         }
 
-        // POST: Physician/Update/5
+        // POST: Department/Update/5
         [HttpPost]
-        public ActionResult Update(int id, Physician physician)
+        public ActionResult Update(int id, Department department)
         {
-            string url = "PhysicianData/UpdatePhysician/" + id;
-            string jsonpayload = jss.Serialize(physician);
+            string url = "DepartmentData/UpdateDepartment/" + id;
+            string jsonpayload = jss.Serialize(department);
             HttpContent content = new StringContent(jsonpayload);
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;
@@ -201,21 +186,21 @@ namespace hospital_project.Controllers
             }
         }
 
-        // GET: Physician/Delete/5
+        // GET: Department/Delete/5
 
         public ActionResult DeleteConfirm(int id)
         {
-            string url = "PhysicianData/FindPhysician/" + id;
+            string url = "DepartmentData/FindDepartment/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
             PhysicianDto SelectedPhysician = response.Content.ReadAsAsync<PhysicianDto>().Result;
             return View(SelectedPhysician);
         }
 
-        // POST: Physician/Delete/5
+        // POST: Department/Delete/5
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            string url = "PhysicianData/DeletePhysician/" + id;
+            string url = "DepartmentData/DeleteDepartment/" + id;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;
@@ -229,4 +214,5 @@ namespace hospital_project.Controllers
                 return RedirectToAction("Error");
             }
         }
+    }
 }
