@@ -217,18 +217,22 @@
     <Compile Include="Migrations\202304020020473_availability-table.designer.cs">
       <DependentUpon>202304020020473_availability-table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202304141636240_DepartmentStaticImplicitOperator.cs" />
+    <Compile Include="Migrations\202304141636240_DepartmentStaticImplicitOperator.designer.cs">
+      <DependentUpon>202304141636240_DepartmentStaticImplicitOperator.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Availability.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Date.cs" />
     <Compile Include="Models\Physician.cs" />
     <Compile Include="Models\ViewModels\DetailsAvailability.cs" />
     <Compile Include="Models\ViewModels\DetailsDepartment.cs" />
     <Compile Include="Models\ViewModels\DetailsPhysician.cs" />
     <Compile Include="Models\ViewModels\UpdateDepartment.cs" />
+    <Compile Include="Models\ViewModels\UpdateAvailability.cs" />
     <Compile Include="Models\ViewModels\UpdatePhysician.cs" />
     <Compile Include="Models\Volunteer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -290,11 +294,12 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Physician\New.cshtml" />
+    <Content Include="Views\Physician\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Department\" />
-    <Folder Include="Views\Physician\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -327,6 +332,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202304020020473_availability-table.resx">
       <DependentUpon>202304020020473_availability-table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304141636240_DepartmentStaticImplicitOperator.resx">
+      <DependentUpon>202304141636240_DepartmentStaticImplicitOperator.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -111,8 +111,6 @@ namespace hospital_project.Controllers
             return View();
         }
 
-        //HEREEEE CONTINUEEE HEREEEEEEEE
-
         // POST: Department/Create
         [HttpPost]
         public ActionResult Create(Department department)
