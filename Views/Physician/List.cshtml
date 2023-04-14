@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<hospital_project.Models.PhysicianDto>
 @{
-    ViewBag.Title = "";
+    ViewBag.Title = "Physician Directory";
 }
 <div>
     <h2>Physician Directory</h2>
@@ -9,9 +9,8 @@
     </nav>
 </div>
 
-@foreach (var physician in Model)
+@foreach (var physician in Model.OrderBy(p=>p.last_name))
 {
-    <h2><a href="/Physician/Details/@physician.physician_id"><b>@physician.first_name @physician.last_name</b></a></h2>
-    <div><b>E-mail Address: </b>@physician.email</div>
-    <div><b>Department: </b>@physician.Departments</div>
+    <h2><a href="/Physician/Details/@physician.physician_id"><b>@physician.last_name, @physician.first_name</b></a></h2>
+    <div><b>E-mail: </b>@physician.email</div>
 }

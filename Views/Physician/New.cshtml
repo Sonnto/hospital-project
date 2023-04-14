@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<hospital_project.Models.PhysicianDto>
-
 @{
     ViewBag.Title = "Add New Physician";
 }
@@ -12,13 +11,13 @@
 
 <form action="/Physician/Create" method="POST">
     <div>
-        <label>First Name:</label> <input type="text" name="first_name" />
+        <label><b>First Name:</b></label> <input type="text" name="first_name" />
     </div>
     <div>
-        <label>Last Name:</label> <input type="text" name="last_name" />
+        <label><b>Last Name:</b></label> <input type="text" name="last_name" />
     </div>
     <div>
-        <label>E-mail Address:</label> <input type="text" name="email" />
+        <label><b>E-mail:</b></label> <input type="text" name="email" />
     </div>
     <div>
         <input type="submit" value="Add Anime" />

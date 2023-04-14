@@ -33,6 +33,46 @@ namespace hospital_project.Controllers
             return DepartmentDtos;
         }
 
+        // GET: api/DepartmentList/ListDepartmentsForPhysician/{physician_id}
+        [HttpGet]
+        [ResponseType(typeof(DepartmentDto))]
+        public IHttpActionResult ListDepartmentsForPhysician(int id)
+        {
+            List<Department> Departments = db.Departments.Where(
+                d => d.Physicians.Any(
+                    p => p.physician_id == id)
+                ).ToList();
+            List<DepartmentDto> DepartmentDtos = new List<DepartmentDto>();
+
+            Departments.ForEach(d => DepartmentDtos.Add(new DepartmentDto()
+            {
+                department_id = d.department_id,
+                department_name = d.department_name,
+            }));
+
+            return Ok(DepartmentDtos);
+        }
+
+        // GET: api/DepartmentList/ListDepartmentsNotForPhysician/{physician_id}
+        [HttpGet]
+        [ResponseType(typeof(DepartmentDto))]
+        public IHttpActionResult ListDepartmentsNotForPhysician(int id)
+        {
+            List<Department> Departments = db.Departments.Where(
+                d => !d.Physicians.Any(
+                    p => p.physician_id == id)
+                ).ToList();
+            List<DepartmentDto> DepartmentDtos = new List<DepartmentDto>();
+
+            Departments.ForEach(d => DepartmentDtos.Add(new DepartmentDto()
+            {
+                department_id = d.department_id,
+                department_name = d.department_name,
+            }));
+
+            return Ok(DepartmentDtos);
+        }
+
         // GET: api/DepartmentData/FindDepartment/5
         [ResponseType(typeof(Department))]
         [HttpGet]

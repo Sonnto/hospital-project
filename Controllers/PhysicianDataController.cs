@@ -79,6 +79,29 @@ namespace hospital_project.Controllers
             return Ok();
         }
 
+        // POST: api/PhysicianData/UnassociatePhysicianWithDepartment/{physician_id}/{department_id}
+        [HttpPost]
+        [Route("api/PhysicianData/UnassociatePhysicianWithDepartment/{physician_id}/{department_id}")]
+        public IHttpActionResult UnAssociateAnimeWithGenre(int physician_id, int department_id)
+        {
+            Physician SelectedPhysician = db.Physicians.Include(p => p.Departments).Where(p => p.physician_id == physician_id).FirstOrDefault();
+            Department SelectedDepartment = db.Departments.Find(department_id);
+
+            if (SelectedPhysician == null || SelectedDepartment == null)
+            {
+                return NotFound();
+            }
+            Debug.WriteLine("Input physician id is: " + physician_id);
+            Debug.WriteLine("Selected Physician's name is: " + SelectedPhysician.first_name + SelectedPhysician.last_name);
+            Debug.WriteLine("Input department id to be removed: " + department_id);
+            Debug.WriteLine("Selected department name to be removed: " + SelectedDepartment.department_name);
+
+            SelectedPhysician.Departments.Remove(SelectedDepartment);
+            db.SaveChanges();
+
+            return Ok();
+        }
+
         // GET: api/PhysicianData/FindPhysician/5
         [ResponseType(typeof(Physician))]
         [HttpGet]

@@ -50,7 +50,7 @@ namespace hospital_project.Controllers
             DetailsPhysician ViewModel = new DetailsPhysician();
 
             //Objective: communicate with our physician data API to retrieve a specific physician
-            //curl https://localhost:44383/api/physiciandata/findphysician/{id}
+            //curl https://localhost:44324/api/physiciandata/findphysician/{id}
 
             string url = "PhysicianData/FindPhysician/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
@@ -94,10 +94,10 @@ namespace hospital_project.Controllers
             return RedirectToAction("Details/" + id);
         }
 
-        //Get: Physician/UnAssociate/{id}?department_id={department_id}
+        //Get: Physician/Unassociate/{id}?department_id={department_id}
         [HttpGet]
 
-        public ActionResult UnAssociate(int id, int department_id)
+        public ActionResult Unassociate(int id, int department_id)
         {
             Debug.WriteLine("Attempting to unassociate physician: " + id + " with department: " + department_id);
             //call API to unassociate physician with department

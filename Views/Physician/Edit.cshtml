@@ -1,0 +1,38 @@
+﻿@model hospital_project.Models.ViewModels.UpdatePhysician
+
+@{
+    ViewBag.Title = "Edit Physician Details";
+}
+<div>
+    <h2>Update Physician: Dr. <i>@Model.SelectedPhysician.first_name @Model.SelectedPhysician.last_name</i></h2>
+    <nav>
+        <h5>
+            | <a href="/Physician/Details/@Model.SelectedPhysician.physician_id"><b>Cancel Editing & Return</b> to Physician's Details</a> |
+        </h5>
+    </nav>
+</div>
+
+<form action="/Physician/Update/@Model.SelectedPhysician.physician_id" method="POST">
+    <div style="display:none;"><b>Physician ID: </b>@Model.SelectedPhysician.physician_id</div>
+    <div>
+        <label><b>First Name: </b></label>
+        <input type="text"
+               name="first_name"
+               value="@Model.SelectedPhysician.first_name" />
+    </div>
+    <div>
+        <<label><b>Last Name: </b></label>
+        <input type="text"
+               name="last_name"
+               value="@Model.SelectedPhysician.last_name" />
+    </div>
+    <div>
+        <<label><b>Email: </b></label>
+        <input type="text"
+               name="email"
+               value="@Model.SelectedPhysician.email" />
+    </div>
+    <div>
+        <input type="submit" value="Update Anime" />
+    </div>
+</form>
