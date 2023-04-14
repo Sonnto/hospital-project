@@ -141,6 +141,7 @@ namespace hospital_project.Controllers
                 Debug.WriteLine("GET parameter" + " " + id);
                 Debug.WriteLine("POST parameter" + " " + physician.physician_id);
                 return BadRequest();
+                //Current issue: mismatched ID. Unsure why.
             }
 
             db.Entry(physician).State = EntityState.Modified;
