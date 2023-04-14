@@ -128,7 +128,7 @@ namespace hospital_project.Controllers
         [HttpPost]
         public IHttpActionResult UpdatePhysician(int id, Physician physician)
         {
-            Debug.WriteLine("I have reached the update physician method");
+            Debug.WriteLine("Reached the update physician method");
             if (!ModelState.IsValid)
             {
                 Debug.WriteLine("Model State is invalid");
@@ -138,8 +138,8 @@ namespace hospital_project.Controllers
             if (id != physician.physician_id)
             {
                 Debug.WriteLine("ID mismatch");
-                Debug.WriteLine("GET parameter" + id);
-                Debug.WriteLine("POST parameter" + physician.physician_id);
+                Debug.WriteLine("GET parameter" + " " + id);
+                Debug.WriteLine("POST parameter" + " " + physician.physician_id);
                 return BadRequest();
             }
 
@@ -153,6 +153,7 @@ namespace hospital_project.Controllers
             {
                 if (!PhysicianExists(id))
                 {
+                    Debug.WriteLine("Physician not found");
                     return NotFound();
                 }
                 else
@@ -160,7 +161,7 @@ namespace hospital_project.Controllers
                     throw;
                 }
             }
-
+            Debug.WriteLine("None of the conditions triggered");
             return StatusCode(HttpStatusCode.NoContent);
         }
 
