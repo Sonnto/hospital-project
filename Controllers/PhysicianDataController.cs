@@ -54,6 +54,28 @@ namespace hospital_project.Controllers
             return Ok(PhysicianDtos);
         }
 
+        // GET: api/PhysicianData/ListPhysiciansNotForDepartment/{physician_id}
+        [HttpGet]
+        [ResponseType(typeof(PhysicianDto))]
+        public IHttpActionResult ListPhysiciansNotForDepartment(int id)
+        {
+            List<Physician> Physicians = db.Physicians.Where(
+                p => !p.Departments.Any(
+                    d => d.department_id == id)
+                ).ToList();
+            List<PhysicianDto> PhysicianDtos = new List<PhysicianDto>();
+
+            Physicians.ForEach(p => PhysicianDtos.Add(new PhysicianDto()
+            {
+                physician_id=p.physician_id ,
+                first_name=p.first_name,
+                last_name=p.last_name,
+                email =p.email,
+            }));
+
+            return Ok(PhysicianDtos);
+        }
+
         // POST: api/PhysicianData/AssociatePhysicianWithDepartment/{physician_id}/{department_d}
         [HttpPost]
         [Route("api/PhysicianData/AssociatePhysicianWithDepartment/{physician_id}/{department_id}")]
@@ -82,7 +104,7 @@ namespace hospital_project.Controllers
         // POST: api/PhysicianData/UnassociatePhysicianWithDepartment/{physician_id}/{department_id}
         [HttpPost]
         [Route("api/PhysicianData/UnassociatePhysicianWithDepartment/{physician_id}/{department_id}")]
-        public IHttpActionResult UnAssociateAnimeWithGenre(int physician_id, int department_id)
+        public IHttpActionResult UnassociatePhysicianWithDepartment(int physician_id, int department_id)
         {
             Physician SelectedPhysician = db.Physicians.Include(p => p.Departments).Where(p => p.physician_id == physician_id).FirstOrDefault();
             Department SelectedDepartment = db.Departments.Find(department_id);
@@ -198,7 +220,7 @@ namespace hospital_project.Controllers
             db.Physicians.Remove(physician);
             db.SaveChanges();
 
-            return Ok(physician);
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)

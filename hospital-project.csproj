@@ -302,6 +302,11 @@
     <Content Include="Views\Physician\DeleteConfirm.cshtml" />
     <Content Include="Views\Physician\Error.cshtml" />
     <Content Include="Views\Department\List.cshtml" />
+    <Content Include="Views\Department\Details.cshtml" />
+    <Content Include="Views\Department\Error.cshtml" />
+    <Content Include="Views\Department\DeleteConfirm.cshtml" />
+    <Content Include="Views\Department\Edit.cshtml" />
+    <Content Include="Views\Department\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

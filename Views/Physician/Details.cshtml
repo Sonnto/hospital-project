@@ -19,17 +19,25 @@
 <div><b>Last Name: </b>@Model.SelectedPhysician.last_name</div>
 <div><b>E-mail: </b>@Model.SelectedPhysician.email</div>
 <div>
-    <b>@(Model.TaggedDepartments.Count() <= 1 ? "Department: " : "Departments: ") </b>
-    @foreach (var department in Model.TaggedDepartments)
+    <b>@(Model.TaggedDepartments.Count() <= 1 ? "Department: " : "Departments: ")</b>
+    @if (Model.TaggedDepartments.Any())
     {
-        <a href="/Department/Details/@department.department_id">@department.department_name</a> <a style="color: red" href="/Physician/UnAssociate/@Model.SelectedPhysician.physician_id?department_id=@department.department_id">[x]</a><br />
+        foreach (var department in Model.TaggedDepartments)
+        {
+            <a href="/Department/Details/@department.department_id">@department.department_name</a> <a style="color: red" href="/Physician/Unassociate/@Model.SelectedPhysician.physician_id?department_id=@department.department_id">[x]</a><br />
+        }
+    }
+    else
+    {
+        <span><b><i>[ None - please assign department(s) to this physician ]</i></b></span>
     }
 </div>
+
 <div>
     <b>Add More Departments</b>
     <form method="post" action="/Physician/Associate/@Model.SelectedPhysician.physician_id">
         <select name="department_id">
-            @foreach (var department in Model.AvailableDepartments.OrderBy(d=>d.department_name))
+            @foreach (var department in Model.AvailableDepartments.OrderBy(d => d.department_name))
             {
                 <option value="@department.department_id">@department.department_name</option>
             }

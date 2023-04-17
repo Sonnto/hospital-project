@@ -114,6 +114,11 @@ namespace hospital_project.Controllers
             return View();
         }
 
+        public ActionResult New()
+        {
+            return View();
+        }
+
         // POST: Physician/Create
         [HttpPost]
         public ActionResult Create(Physician physician)

@@ -1,0 +1,47 @@
+﻿@model hospital_project.Models.ViewModels.DetailsDepartment
+@{
+    ViewBag.Title = "Department Details";
+}
+
+<div>
+    <h2><i>Department of @Model.SelectedDepartment.department_name</i></h2>
+    <nav>
+        <h5>
+            | <a href="/Department/List"><b>Return</b> to Department Directory</a> |
+            <a href="/Department/Edit/@Model.SelectedDepartment.department_id"><b>Edit</b> Department Information</a> |
+            <a href="/Department/DeleteConfirm/@Model.SelectedDepartment.department_id"><b style="color: red">Delete</b> Department</a> |
+        </h5>
+    </nav>
+</div>
+
+<h3>Information</h3>
+<div>
+    <b>Department Name: </b>@Model.SelectedDepartment.department_name
+</div>
+<div>
+    <b>@(Model.TaggedPhysicians.Count() <= 1 ? "Department Physician: " : "Department Physicians: ") </b>
+    @if (Model.TaggedPhysicians.Any())
+    {
+        foreach (var physician in Model.TaggedPhysicians)
+        {
+            <a href="/Physician/Details/@physician.physician_id">Dr. @physician.first_name @physician.last_name </a> <a style="color: red" href="/Department/Unassociate/@Model.SelectedDepartment.department_id?physician_id=@physician.physician_id">[x]</a><br />
+        }
+    }
+    else
+    {
+        <span><b><i>[ None - please assign physician(s) to this department ]</i></b></span>
+    }
+</div>
+
+<div>
+    <b>Add More Physicians to this Department</b>
+    <form method="post" action="/Department/Associate/@Model.SelectedDepartment.department_id">
+        <select name="physician_id">
+            @foreach (var physician in Model.AvailablePhysicians.OrderBy(p => p.last_name))
+            {
+                <option value="@physician.physician_id">@physician.last_name, @physician.first_name</option>
+            }
+        </select>
+        <input type="submit" value="+" />
+    </form>
+</div>

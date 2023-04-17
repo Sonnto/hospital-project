@@ -1,7 +1,15 @@
-﻿
+﻿@model IEnumerable<hospital_project.Models.DepartmentDto>
 @{
-    ViewBag.Title = "List";
+    ViewBag.Title = "Department Directory";
 }
+<div>
+    <h2>Department Directory</h2>
+    <nav>
+        <h5>| <a href="/Department/New"><b>Add</b> New Department</a> |</h5>
+    </nav>
+</div>
 
-<h2>List</h2>
-
+@foreach (var department in Model.OrderBy(d => d.department_name))
+{
+    <h2><a href="/Department/Details/@department.department_id"><b>@department.department_name</b></a></h2>
+}

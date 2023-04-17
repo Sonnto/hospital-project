@@ -73,6 +73,56 @@ namespace hospital_project.Controllers
             return Ok(DepartmentDtos);
         }
 
+        // POST: api/DepartmentData/AssociateDepartmentWithPhysician/{department_id}/{physician_id}
+        [HttpPost]
+        [Route("api/DepartmentData/AssociateDepartmentWithPhysician/{department_id}/{physician_id}")]
+        public IHttpActionResult AssociateDepartmentWithPhysician(int department_id, int physician_id)
+        {
+            Department SelectedDepartment = db.Departments.Include
+                (d => d.Physicians).Where
+                (d => d.department_id == department_id).FirstOrDefault();
+            Physician SelectedPhysician = db.Physicians.Find(physician_id);
+
+            if (SelectedDepartment == null || SelectedPhysician == null)
+            {
+                return NotFound();
+            }
+            Debug.WriteLine("Input department id is: " + department_id);
+            Debug.WriteLine("Selected department name is: " + SelectedDepartment.department_name);
+            Debug.WriteLine("Input physician id to be added: " + physician_id);
+            Debug.WriteLine("Selected physician name to be added: " + SelectedPhysician.first_name + " " + SelectedPhysician.last_name);
+
+            SelectedDepartment.Physicians.Add(SelectedPhysician);
+            db.SaveChanges();
+
+            return Ok();
+        }
+
+        // POST: api/DepartmentData/UnassociateDepartmentWithPhysician/{department_id}/{physician_id}
+        [HttpPost]
+        [Route("api/DepartmentData/UnassociateDepartmentWithPhysician/{department_id}/{physician_id}")]
+        public IHttpActionResult UnassociateDepartmentWithPhysician(int department_id, int physician_id)
+        {
+            Department SelectedDepartment = db.Departments.Include(d => d.Physicians).Where(d => d.department_id == department_id).FirstOrDefault();
+            Physician SelectedPhysician = db.Physicians.Find(physician_id);
+
+            if (SelectedDepartment == null || SelectedPhysician == null)
+            {
+                return NotFound();
+            }
+            Debug.WriteLine("Input department id is: " + department_id);
+            Debug.WriteLine("Selected department name to be removed: " + SelectedDepartment.department_name);
+            Debug.WriteLine("Input physician id to be removed: " + physician_id);
+            Debug.WriteLine("Selected Physician's name is: " + SelectedPhysician.first_name + SelectedPhysician.last_name);
+
+            SelectedPhysician.Departments.Remove(SelectedDepartment);
+            db.SaveChanges();
+
+            return Ok();
+        }
+
+        /**** EDIT ABOVE *****/
+
         // GET: api/DepartmentData/FindDepartment/5
         [ResponseType(typeof(Department))]
         [HttpGet]
@@ -163,7 +213,7 @@ namespace hospital_project.Controllers
             db.Departments.Remove(department);
             db.SaveChanges();
 
-            return Ok(department);
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)

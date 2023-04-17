@@ -91,10 +91,10 @@ namespace hospital_project.Controllers
             return RedirectToAction("Details/" + id);
         }
 
-        //Get: Department/UnAssociate/{id}?physician_id={physician_id}
+        //Get: Department/Unassociate/{id}?physician_id={physician_id}
         [HttpGet]
 
-        public ActionResult UnAssociate(int id, int physician_id)
+        public ActionResult Unassociate(int id, int physician_id)
         {
             Debug.WriteLine("Attempting to unassociate department: " + id + " with physician: " + physician_id);
             //call API to unassociate department with physician
@@ -107,6 +107,11 @@ namespace hospital_project.Controllers
         }
 
         public ActionResult Error()
+        {
+            return View();
+        }
+
+        public ActionResult New()
         {
             return View();
         }
