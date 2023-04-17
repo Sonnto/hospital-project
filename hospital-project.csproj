@@ -301,10 +301,10 @@
     <Content Include="Views\Physician\Edit.cshtml" />
     <Content Include="Views\Physician\DeleteConfirm.cshtml" />
     <Content Include="Views\Physician\Error.cshtml" />
+    <Content Include="Views\Department\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Department\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

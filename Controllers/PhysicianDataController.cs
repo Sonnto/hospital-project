@@ -140,6 +140,8 @@ namespace hospital_project.Controllers
                 Debug.WriteLine("ID mismatch");
                 Debug.WriteLine("GET parameter" + " " + id);
                 Debug.WriteLine("POST parameter" + " " + physician.physician_id);
+                Debug.WriteLine("Value of physician.physician_id: " + physician.physician_id);
+
                 return BadRequest();
                 //Current issue: mismatched ID. Unsure why.
             }

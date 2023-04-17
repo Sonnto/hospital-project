@@ -13,7 +13,11 @@
 </div>
 
 <form action="/Physician/Update/@Model.SelectedPhysician.physician_id" method="POST">
-    <div style="display:block;"><b>Physician ID: </b>@Model.SelectedPhysician.physician_id</div>
+    <div style="display:none;">
+    <input type="text"
+           name="physician_id"
+           value="@Model.SelectedPhysician.physician_id"/>
+    </div>
     <div>
         <label><b>First Name: </b></label>
         <input type="text"
