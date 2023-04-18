@@ -29,7 +29,7 @@ namespace hospital_project.Controllers
                 availability_id=a.availability_id,
                 physician_first_name=a.Physicians.first_name,
                 physician_last_name=a.Physicians.last_name,
-                department_name=a.Departments.department_name,
+                physician_email=a.Physicians.email,
                 availability_dates=a.availability_dates,
             }));
 
@@ -47,7 +47,6 @@ namespace hospital_project.Controllers
                 availability_id = Availability.availability_id,
                 physician_first_name = Availability.Physicians.first_name,
                 physician_last_name = Availability.Physicians.last_name,
-                department_name = Availability.Departments.department_name,
                 physician_email = Availability.Physicians.email,
                 availability_dates = Availability.availability_dates,
             };

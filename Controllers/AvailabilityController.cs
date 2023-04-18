@@ -63,6 +63,7 @@ namespace hospital_project.Controllers
 
             ViewModel.SelectedAvailability = SelectedAvailability;
 
+            /*
             //show associated physicians with this availability between here
 
             url = "AvailabilityData/ListPhysiciansForAvailability/" + id;
@@ -76,6 +77,8 @@ namespace hospital_project.Controllers
             IEnumerable<AvailabilityDto> AvailablePhysicians = response.Content.ReadAsAsync<IEnumerable<AvailabilityDto>>().Result;
 
             ViewModel.AvailablePhysicians = (IEnumerable<PhysicianDto>)AvailablePhysicians;
+
+            */
 
             return View(ViewModel);
         }
@@ -112,7 +115,7 @@ namespace hospital_project.Controllers
             HttpResponseMessage response = client.PostAsync(url, content).Result;
 
             return RedirectToAction("Details/" + id);
-        }
+        } */
 
         public ActionResult Error()
         {
@@ -120,7 +123,7 @@ namespace hospital_project.Controllers
         }
 
         // ^^^^ ======== NOT SURE IF Associate AND UnAssociate ACTIONS ARE NEEDED ======== ^^^^
-        */
+    
 
         // vvvv ======== NOT SURE IF Create ACTION NEEDED ======== vvvv
 

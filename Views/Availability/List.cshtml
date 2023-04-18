@@ -1,0 +1,16 @@
+﻿@model IEnumerable<hospital_project.Models.AvailabilityDto>
+@{
+    ViewBag.Title = "Availability Directory";
+}
+<div>
+    <h2>Availability Directory</h2>
+    <nav>
+        <h5>| <a href="/Availability/New"><b>Add</b> New Availability for a Physician</a> |</h5>
+    </nav>
+</div>
+
+@foreach (var availability in Model.OrderBy(p=>p.physician_last_name))
+{
+    <h2><a href="/Availability/Details/@availability.availability_id"><b>@availability.physician_last_name, @availability.physician_first_name</b></a></h2>
+    <div><b>E-mail: </b>@availability.physician_email</div>
+}

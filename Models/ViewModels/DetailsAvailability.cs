@@ -7,7 +7,7 @@ namespace hospital_project.Models.ViewModels
 {
     public class DetailsAvailability
     {
-        public DepartmentDto SelectedAvailability { get; set; }
+        public AvailabilityDto SelectedAvailability { get; set; }
         public IEnumerable<PhysicianDto> TaggedPhysicians { get; set; }
         public IEnumerable<PhysicianDto> AvailablePhysicians { get; set; }
     }

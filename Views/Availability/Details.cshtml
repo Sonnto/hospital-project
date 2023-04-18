@@ -1,0 +1,26 @@
+﻿@model hospital_project.Models.ViewModels.DetailsAvailability
+@{
+    ViewBag.Title = "Availability Details";
+}
+
+<div>
+    <h2><i>Availability for Dr. @Model.SelectedAvailability.physician_first_name @Model.SelectedAvailability.physician_last_name</i></h2>
+    <nav>
+        <h5>
+            | <a href="/Availability/List"><b>Return</b> to Availability Directory</a> |
+              <a href="/Availability/Edit/@Model.SelectedAvailability.availability_id"><b>Edit</b> Availability Information</a> |
+            <a href="/Availability/DeleteConfirm/@Model.SelectedAvailability.availability_id"><b style="color: red">Delete</b> Availability</a> |
+        </h5>
+    </nav>
+</div>
+
+<h3>Information</h3>
+<div>
+    <b>Physician Name: </b><a href="/Physician/Details/@Model.SelectedAvailability.physician_id">Dr. @Model.SelectedAvailability.physician_first_name @Model.SelectedAvailability.physician_last_name</a>
+</div>
+<div>
+    <b>Availability: </b> @Model.SelectedAvailability.availability_dates
+</div>
+<div>
+    <b>Physician's E-mail: </b> @Model.SelectedAvailability.physician_email
+</div>

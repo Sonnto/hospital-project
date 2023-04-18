@@ -250,6 +250,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="jsondata\physician.json" />
+    <Content Include=".gitignore" />
+    <Content Include="README.md" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -307,6 +309,9 @@
     <Content Include="Views\Department\DeleteConfirm.cshtml" />
     <Content Include="Views\Department\Edit.cshtml" />
     <Content Include="Views\Department\New.cshtml" />
+    <Content Include="Views\Availability\Error.cshtml" />
+    <Content Include="Views\Availability\List.cshtml" />
+    <Content Include="Views\Availability\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

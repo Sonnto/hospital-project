@@ -195,8 +195,8 @@ namespace hospital_project.Controllers
         {
             string url = "DepartmentData/FindDepartment/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
-            PhysicianDto SelectedPhysician = response.Content.ReadAsAsync<PhysicianDto>().Result;
-            return View(SelectedPhysician);
+            DepartmentDto SelectedDepartment = response.Content.ReadAsAsync<DepartmentDto>().Result;
+            return View(SelectedDepartment);
         }
 
         // POST: Department/Delete/5
