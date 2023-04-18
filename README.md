@@ -12,6 +12,6 @@ Hospital project for Humber College, Group 6 - recreate how the hospitals solve 
 - Booking (M2M)
 
 # Ellis Chang
-- Schedule
-- Volunteer
+- Philantropist
+- Donation Level
 - Department (shared)
