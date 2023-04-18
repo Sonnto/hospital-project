@@ -182,6 +182,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\DepartmentDataController.cs" />
+    <Compile Include="Controllers\DonationController.cs" />
+    <Compile Include="Controllers\DonationDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PhilantropistController.cs" />
@@ -242,6 +246,10 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Philantropist.cs" />
     <Compile Include="Models\Physician.cs" />
+    <Compile Include="Models\ViewModels\DetailsDepartment.cs" />
+    <Compile Include="Models\ViewModels\DetailsDonation.cs" />
+    <Compile Include="Models\ViewModels\DetailsPhilantropist.cs" />
+    <Compile Include="Models\ViewModels\UpdatePhilantropist.cs" />
     <Compile Include="Models\Volunteer.cs" />
     <Compile Include="Models\VolunteerShift.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -308,6 +316,15 @@
     <Content Include="Views\Philantropist\Details.cshtml" />
     <Content Include="Views\Philantropist\New.cshtml" />
     <Content Include="Views\Philantropist\Error.cshtml" />
+    <Content Include="Views\Philantropist\Edit.cshtml" />
+    <Content Include="Views\Department\List.cshtml" />
+    <Content Include="Views\Department\New.cshtml" />
+    <Content Include="Views\Department\Error.cshtml" />
+    <Content Include="Views\Department\Edit.cshtml" />
+    <Content Include="Views\Department\DeleteConfirm.cshtml" />
+    <Content Include="Views\Department\Details.cshtml" />
+    <Content Include="Views\Donation\List.cshtml" />
+    <Content Include="Views\Donation\Details.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

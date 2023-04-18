@@ -18,4 +18,10 @@ namespace hospital_project.Models
         //A department can recieve donations from many philantropists
         public ICollection<Philantropist> Philantropists{ get; set; }
     }
+
+    public class DepartmentDto
+    {
+        public int department_id { get; set; }
+        public string department_name { get; set; }
+    }
 }

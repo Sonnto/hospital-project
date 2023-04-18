@@ -9,6 +9,8 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using hospital_project.Models;
+using hospital_project.Migrations;
+using System.Diagnostics;
 
 namespace hospital_project.Controllers
 {
@@ -18,8 +20,9 @@ namespace hospital_project.Controllers
 
         // GET: api/PhilantropistData/ListPhilantropists
         [HttpGet]
+        [ResponseType(typeof(PhilantropistDto))]
 
-        public IEnumerable<PhilantropistDto> ListPhilantropists()
+        public IHttpActionResult ListPhilantropists()
         {
             List<Philantropist> Philantropists = db.Philantropists.ToList();
             List<PhilantropistDto> PhilantropistDtos = new List<PhilantropistDto>();
@@ -31,8 +34,128 @@ namespace hospital_project.Controllers
                 Company = p.Company,
                 DonationID = p.Donations.DonationID
             }));
-            return PhilantropistDtos;
+            return Ok(PhilantropistDtos);
         }
+
+
+
+
+
+
+
+
+        //nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+
+
+
+
+
+
+
+
+
+        [HttpGet]
+        [ResponseType(typeof(PhilantropistDto))]
+        public IHttpActionResult ListPhilantropistsForDonation(int id)
+        {
+            List<Philantropist> Philantropists = db.Philantropists.Where(a => a.DonationID == id).ToList();
+            List<PhilantropistDto> PhilantropistDtos = new List<PhilantropistDto>();
+
+            Philantropists.ForEach(a => PhilantropistDtos.Add(new PhilantropistDto()
+            {
+                PhilantropistID = a.PhilantropistID,
+                PhilantropistFirstName = a.PhilantropistFirstName,
+                PhilantropistLastName = a.PhilantropistLastName,
+                Company = a.Company,
+                DonationID = a.Donations.DonationID
+            }));
+
+            return Ok(PhilantropistDtos);
+        }
+
+
+
+        [HttpGet]
+        [ResponseType(typeof(PhilantropistDto))]
+        public IHttpActionResult ListPhilantropistsForDepartment(int id)
+        {
+            //all Philantropist that have departments which match with our ID
+            List<Philantropist> Philantropists = db.Philantropists.Where(
+                a => a.Departments.Any(
+                    c => c.department_id == id
+                )).ToList();
+            List<PhilantropistDto> PhilantropistDtos = new List<PhilantropistDto>();
+
+            Philantropists.ForEach(a => PhilantropistDtos.Add(new PhilantropistDto()
+            {
+                PhilantropistID = a.PhilantropistID,
+                PhilantropistFirstName = a.PhilantropistFirstName,
+                PhilantropistLastName = a.PhilantropistLastName,
+                Company = a.Company,
+                DonationID = a.Donations.DonationID
+            }));
+
+            return Ok(PhilantropistDtos);
+        }
+
+
+        [HttpPost]
+        [Route("api/PhilantropistData/AssociatePhilantropistWithDepartment/{philantropistid}/{departmentid}")]
+        public IHttpActionResult AssociatePhilantropistsWithDepartment(int philantropistid, int departmentid)
+        {
+
+            Philantropist SelectedPhilantropist = db.Philantropists.Include(a => a.Departments).Where(a => a.PhilantropistID == departmentid).FirstOrDefault();
+            Department SelectedDepartment = db.Departments.Find(departmentid);
+
+            if (SelectedPhilantropist == null || SelectedDepartment == null)
+            {
+                return NotFound();
+            }
+
+
+            SelectedPhilantropist.Departments.Add(SelectedDepartment);
+            db.SaveChanges();
+
+            return Ok();
+        }
+
+
+
+        [HttpPost]
+        [Route("api/PhilantropistData/UnAssociatePhilantropistWithDepartment/{philantropistid}/{departmentid}")]
+        public IHttpActionResult UnAssociatePhilantropistWithDepartment(int philantropistid, int departmentid)
+        {
+
+            Philantropist SelectedPhilantropist = db.Philantropists.Include(a => a.Departments).Where(a => a.PhilantropistID == philantropistid).FirstOrDefault();
+            Department SelectedDepartment = db.Departments.Find(departmentid);
+
+            if (SelectedPhilantropist == null || SelectedDepartment == null)
+            {
+                return NotFound();
+            }
+
+            SelectedPhilantropist.Departments.Remove(SelectedDepartment);
+            db.SaveChanges();
+
+            return Ok();
+        }
+
+
+
+
+
+
+
+
+
+        //nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+
+
+
+
+
+
+
 
         // GET: api/PhilantropistData/FindPhilantropist/2
         [ResponseType(typeof(Philantropist))]

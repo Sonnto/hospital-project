@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<hospital_project.Models.DonationDto>
+
 @{
     ViewBag.Title = "Create";
 }
@@ -17,9 +18,17 @@
         <label>Company:</label>
         <input type="text" name="Company" />
     </div>
+    
+
     <div>
-        <label>Donation Tier</label>
-        <input type="number" name="DonationID" />
+        <label>Donation Tier:</label>
+        <select name="DonationID">
+            @foreach (var donation in Model)
+            {
+                <option value="@donation.DonationID">@donation.DonationLevel</option>
+            }
+        </select>
+
     </div>
     <div>
         <input type="submit" value="Add Philantropist" />

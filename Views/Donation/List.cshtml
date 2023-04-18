@@ -1,0 +1,15 @@
+﻿@model IEnumerable<hospital_project.Models.DonationDto>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+@foreach (var Donation in Model)
+{
+    <h2><a href="/Donation/Details/@Donation.DonationID">@Donation.DonationID</a></h2>
+    <div>Donation Level: @Donation.DonationLevel</div>
+
+}
+
+

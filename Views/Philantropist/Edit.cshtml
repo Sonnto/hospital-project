@@ -1,0 +1,45 @@
+﻿@model hospital_project.Models.ViewModels.UpdatePhilantropist
+
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update Philantropist</h2>
+
+<form action="/Philantropist/Update/@Model.SelectedPhilantropist.PhilantropistID" method="POST">
+    <div style="display:none;">
+        @* Pass through the Philantropist ID *@
+        <input type="text" name="PhilantropistID" value="@Model.SelectedPhilantropist.PhilantropistID" />
+    </div>
+    <div>
+        <label>First Name:</label> <input type="text" name="PhilantropistFirstName" value="@Model.SelectedPhilantropist.PhilantropistFirstName" />
+    </div>
+    <div>
+        <label>Last Name:</label> <input type="text" name="PhilantropistLastName" value="@Model.SelectedPhilantropist.PhilantropistLastName" />
+    </div>
+    <div>
+        <label>Company:</label> <input type="text" name="Company" value="@Model.SelectedPhilantropist.Company" />
+    </div>
+    <div>
+        <label>Donation Tier:</label>
+
+        <select name="DonationTier">
+            @foreach (var donation in Model.DonationOptions)
+            {
+                string selected = "";
+                if (donation.DonationID == Model.SelectedPhilantropist.DonationID)
+                {
+                    selected = "selected";
+                }
+                <option value="@donation.DonationID" @selected>@donation.DonationLevel</option>
+
+            }
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Update Philantropist" />
+
+    </div>
+
+</form>
+<a href="/Philantropist/List">Cancel</a>

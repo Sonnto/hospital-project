@@ -1,0 +1,23 @@
+﻿@model hospital_project.Models.ViewModels.DetailsDonation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<a href="/Donation/List">Go back to list</a>
+<br />
+<a style="color:#ab2020;" href="/Donation/DeleteConfirm/@Model.SelectedDonation.DonationID">Delete</a>
+<h2>@Model.SelectedDonation.DonationID</h2>
+<div>Donation Level: @Model.SelectedDonation.DonationLevel</div>
+
+
+<div style="margin-top:100px;">
+    <h3>Philantropists with this Donation Level</h3>
+    @foreach (var philantropist in Model.RelatedPhilantropists)
+    {
+        <a href="/philantropist/Details/@philantropist.PhilantropistID">@philantropist.PhilantropistFirstName @philantropist.PhilantropistLastName</a>
+
+    }
+</div>

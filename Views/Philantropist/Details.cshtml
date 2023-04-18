@@ -1,12 +1,38 @@
-﻿@model hospital_project.Models.PhilantropistDto 
+﻿@model hospital_project.Models.ViewModels.DetailsPhilantropist
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "View";
 }
 
-<a href="/Philantropist/List">Go back to list</a>
-<h2>@Model.PhilantropistFirstName @Model.PhilantropistLastName</h2>
-<div>Company: @Model.Company</div>
-<div>Donation Tier: @Model.DonationID</div>
+<form action="/Philantropist/List">
+    <input type="submit" value="Go back to list" />
+</form>
 
+<form action="/Philantropist/Edit/@Model.SelectedPhilantropist.PhilantropistID">
+    <input type="submit" value="Edit Philantropist" />
+</form>
 
+<h2>@Model.SelectedPhilantropist.PhilantropistFirstName @Model.SelectedPhilantropist.PhilantropistLastName</h2>
+<h3>Company: @Model.SelectedPhilantropist.Company</h3>
+<h3>Donation Tier: <a href="/Donation/Details/@Model.SelectedPhilantropist.DonationID">@Model.SelectedPhilantropist.DonationID</a></h3>
+
+<h3>Departments donated to: </h3>
+@foreach (var department in Model.DonatedDepartments)
+{
+    <a href="/companion/details/@department.department_id">@department.department_name</a>
+    <a href="/destination/unassociate/@Model.SelectedPhilantropist.PhilantropistID?department_id=@department.department_id">   [X]</a>
+    <br />
+}
+
+<div>
+    <h3>Add a new department that @Model.SelectedPhilantropist.PhilantropistFirstName donated to!</h3>
+    <form method="POST" action="/Destination/Associate/@Model.SelectedPhilantropist.PhilantropistID/">
+        <select name="CompanionID">
+            @foreach (var department in Model.AvailableDepartments)
+            {
+                <option value="@department.department_id">@department.department_name</option>
+            }
+        </select>
+        <input type="submit" value="Associate Department" />
+    </form>
+</div>

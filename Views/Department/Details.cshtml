@@ -1,0 +1,24 @@
+﻿@model hospital_project.Models.ViewModels.DetailsDepartment
+
+@{
+    ViewBag.Title = "View";
+}
+
+<a href="/Department/List">Go back to list</a>
+<br />
+<a href="/Department/Edit/@Model.SelectedDepartment.department_id">Update</a>
+<br />
+<a style="color:#ab2020;" href="/Department/DeleteConfirm/@Model.SelectedDepartment.department_id">Delete</a>
+<h2>@Model.SelectedDepartment.department_name</h2>
+
+
+
+<div>
+    <h3>Donated to by:</h3>
+    @foreach (var department in Model.PhilantropistsWhoDonated)
+    {
+        <a href="/Philantropist/Details/@department.PhilantropistID">@department.PhilantropistFirstName @department.PhilantropistLastName</a><br />
+
+    }
+</div>
+

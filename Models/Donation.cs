@@ -14,4 +14,13 @@ namespace hospital_project.Models
         public string DonationLevel { get; set; }
         public int MinAmount { get; set; }
     }
+
+    public class DonationDto
+    {
+        public int DonationID { get; set; }
+
+        public string DonationLevel { get; set; }
+
+        public int MinAmount { get; set; }
+    }
 }

@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Department</h2>
+<form action="/Department/Create" method="POST">
+    <div>
+        <label>Department:</label> <input type="text" name="department_name" />
+    </div>
+    <div>
+        <input type="submit" value="Create Department" />
+
+    </div>
+</form>
+<a href="/department/list">Cancel</a>
+
