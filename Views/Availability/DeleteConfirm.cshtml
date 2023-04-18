@@ -1,0 +1,16 @@
+﻿@model hospital_project.Models.AvailabilityDto
+
+@{
+    ViewBag.Title = "Delete Availability Confirmation";
+}
+
+<h2>Delete Availability for Dr. <i>@Model.physician_first_name @Model.physician_last_name</i>?</h2>
+<nav>
+    <h5>
+        | <a href="/Availability/Details/@Model.availability_id"><b>Cancel Deletion & Return</b> to Availability Details</a> |
+          <a href="/Availability/Edit/@Model.availability_id"><b>Edit</b> Availability Information</a> |
+    </h5>
+</nav>
+<form action="/Availability/Delete/@Model.availability_id" method="POST">
+    <input type="submit" value="Confirm Deletion" />
+</form>

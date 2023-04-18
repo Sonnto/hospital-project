@@ -27,6 +27,7 @@ namespace hospital_project.Controllers
             Availabilities.ForEach(a => AvailabilityDtos.Add(new AvailabilityDto()
             {
                 availability_id=a.availability_id,
+                physician_id=a.physician_id,
                 physician_first_name=a.Physicians.first_name,
                 physician_last_name=a.Physicians.last_name,
                 physician_email=a.Physicians.email,
@@ -45,6 +46,7 @@ namespace hospital_project.Controllers
             AvailabilityDto AvailabilityDto = new AvailabilityDto()
             {
                 availability_id = Availability.availability_id,
+                physician_id = Availability.physician_id,
                 physician_first_name = Availability.Physicians.first_name,
                 physician_last_name = Availability.Physicians.last_name,
                 physician_email = Availability.Physicians.email,

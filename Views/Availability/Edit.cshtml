@@ -1,0 +1,31 @@
+﻿@model hospital_project.Models.ViewModels.UpdateAvailability
+
+@{
+    ViewBag.Title = "Edit Availability Details";
+}
+<div>
+    <h2>Update Availability for Dr. <i>@Model.SelectedAvailability.physician_first_name @Model.SelectedAvailability.physician_last_name</i></h2>
+    <nav>
+        <h5>
+            | <a href="/Availability/Details/@Model.SelectedAvailability.availability_id"><b>Cancel Editing & Return</b> to Availability Details</a> |
+        </h5>
+    </nav>
+</div>
+
+<form action="/Availability/Update/@Model.SelectedAvailability.availability_id" method="POST">
+    <div style="display:none;">
+        <input type="text"
+               name="availability_id"
+               value="@Model.SelectedAvailability.availability_id" />
+    </div>
+    <div>
+        <b>Physician:</b> <a href="/Physician/Details/@Model.SelectedAvailability.physician_id">Dr. @Model.SelectedAvailability.physician_first_name @Model.SelectedAvailability.physician_last_name</a>
+    </div>
+    <div>
+        <label><b>Availability:</b></label> <input type="text" value="@Model.SelectedAvailability.availability_dates" name="availability_dates" />
+    </div>
+
+    <div>
+        <input type="submit" value="Update Department Details" />
+    </div>
+</form>

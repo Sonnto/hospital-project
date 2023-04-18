@@ -1,0 +1,29 @@
+﻿@model IEnumerable<hospital_project.Models.PhysicianDto>
+@{
+    ViewBag.Title = "Add New Availability for a Physician";
+}
+
+<div>
+    <h2>Add New Availability for a Physician</h2>
+    <nav>
+        <h5>| <a href="/Availability/List"><b>Cancel Adding & Return</b> to Availability Directory</a> |</h5>
+    </nav>
+</div>
+
+<form action="/Availability/Create" method="POST">
+    <div>
+        <label><b>Physician:</b></label> 
+        <select name="physician_id">
+            @foreach (var physician in Model)
+            {
+                <option value="@physician.physician_id">@physician.last_name, @physician.first_name</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label><b>Availability:</b> </label> <input type="text" name="availability_dates" />
+    </div>
+    <div>
+        <input type="submit" value="Add New Availability" />
+    </div>
+</form>

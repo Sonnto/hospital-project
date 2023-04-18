@@ -113,10 +113,9 @@ C:\Users\Anthony\Documents\GitHub\hospital-project\obj\Debug\hospital_project.Mi
 C:\Users\Anthony\Documents\GitHub\hospital-project\obj\Debug\hospital_project.Migrations.Departments.resources
 C:\Users\Anthony\Documents\GitHub\hospital-project\obj\Debug\hospital_project.Migrations.Volunteers.resources
 C:\Users\Anthony\Documents\GitHub\hospital-project\obj\Debug\hospital_project.Migrations.PhysiciansDepartments.resources
-C:\Users\Anthony\Documents\GitHub\hospital-project\obj\Debug\hospital_project.Migrations.availabilitytable.resources
-C:\Users\Anthony\Documents\GitHub\hospital-project\obj\Debug\hospital_project.Migrations.DepartmentStaticImplicitOperator.resources
 C:\Users\Anthony\Documents\GitHub\hospital-project\obj\Debug\hospital-project.csproj.GenerateResource.cache
 C:\Users\Anthony\Documents\GitHub\hospital-project\obj\Debug\hospital-project.csproj.CoreCompileInputs.cache
 C:\Users\Anthony\Documents\GitHub\hospital-project\obj\Debug\hospital-project.csproj.CopyComplete
 C:\Users\Anthony\Documents\GitHub\hospital-project\obj\Debug\hospital-project.dll
 C:\Users\Anthony\Documents\GitHub\hospital-project\obj\Debug\hospital-project.pdb
+C:\Users\Anthony\Documents\GitHub\hospital-project\obj\Debug\hospital_project.Migrations.availabilitytable.resources

@@ -11,6 +11,6 @@ namespace hospital_project.Models.ViewModels
 
         //the existing physician availability information
 
-        public PhysicianDto SelectedPhysician { get; set; }
+        public AvailabilityDto SelectedAvailability { get; set; }
     }
 }

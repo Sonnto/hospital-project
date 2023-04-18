@@ -122,12 +122,21 @@ namespace hospital_project.Controllers
             return View();
         }
 
+        public ActionResult New()
+        {
+            //Information about Physicians
+
+            string url = "PhysicianData/ListPhysicians";
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            IEnumerable<PhysicianDto> PhysicianOptions = response.Content.ReadAsAsync<IEnumerable<PhysicianDto>>().Result;
+
+            return View(PhysicianOptions);
+        }
+
         // ^^^^ ======== NOT SURE IF Associate AND UnAssociate ACTIONS ARE NEEDED ======== ^^^^
-    
+
 
         // vvvv ======== NOT SURE IF Create ACTION NEEDED ======== vvvv
-
-        /*
 
         //May not be needed because availability_date is not a pre-set but a string the user can be said and there is no "list of availabilities"
 
@@ -164,7 +173,7 @@ namespace hospital_project.Controllers
         }
 
         // ^^^^ ======== NOT SURE IF Create ACTION NEEDED ======== ^^^^
-        */
+   
 
         // GET: Availability/Edit/5
         [HttpGet]
@@ -176,12 +185,12 @@ namespace hospital_project.Controllers
 
             string url = "AvailabilityData/FindAvailability/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
-            PhysicianDto SelectedPhysician = response.Content.ReadAsAsync<PhysicianDto>().Result;
+            AvailabilityDto SelectedAvailability = response.Content.ReadAsAsync<AvailabilityDto>().Result;
 
-            Debug.WriteLine("AvailabilityController.cs: SelectedPhysician's full name: " + SelectedPhysician.first_name +" " + SelectedPhysician.last_name);
-            Debug.WriteLine("AvailabilityController.cs: Physician id for edit is: " + id);
+            Debug.WriteLine("AvailabilityController.cs: SelectedAvailability's Physician name: " + SelectedAvailability.physician_first_name +" " + SelectedAvailability.physician_last_name);
+            Debug.WriteLine("AvailabilityController.cs: Availability id for edit is: " + id);
 
-            ViewModel.SelectedPhysician = SelectedPhysician;
+            ViewModel.SelectedAvailability = SelectedAvailability;
             return View(ViewModel);
         }
 

@@ -7,13 +7,13 @@ namespace hospital_project.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class DepartmentStaticImplicitOperator : IMigrationMetadata
+    public sealed partial class availabilitytable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DepartmentStaticImplicitOperator));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(availabilitytable));
         
         string IMigrationMetadata.Id
         {
-            get { return "202304141636240_DepartmentStaticImplicitOperator"; }
+            get { return "202304182008076_availabilitytable"; }
         }
         
         string IMigrationMetadata.Source

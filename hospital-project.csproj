@@ -213,13 +213,9 @@
     <Compile Include="Migrations\202303262126589_Physicians-Departments.designer.cs">
       <DependentUpon>202303262126589_Physicians-Departments.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202304020020473_availability-table.cs" />
-    <Compile Include="Migrations\202304020020473_availability-table.designer.cs">
-      <DependentUpon>202304020020473_availability-table.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304141636240_DepartmentStaticImplicitOperator.cs" />
-    <Compile Include="Migrations\202304141636240_DepartmentStaticImplicitOperator.designer.cs">
-      <DependentUpon>202304141636240_DepartmentStaticImplicitOperator.cs</DependentUpon>
+    <Compile Include="Migrations\202304182008076_availabilitytable.cs" />
+    <Compile Include="Migrations\202304182008076_availabilitytable.designer.cs">
+      <DependentUpon>202304182008076_availabilitytable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -312,6 +308,9 @@
     <Content Include="Views\Availability\Error.cshtml" />
     <Content Include="Views\Availability\List.cshtml" />
     <Content Include="Views\Availability\Details.cshtml" />
+    <Content Include="Views\Availability\New.cshtml" />
+    <Content Include="Views\Availability\Edit.cshtml" />
+    <Content Include="Views\Availability\DeleteConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -345,11 +344,8 @@
     <EmbeddedResource Include="Migrations\202303262126589_Physicians-Departments.resx">
       <DependentUpon>202303262126589_Physicians-Departments.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304020020473_availability-table.resx">
-      <DependentUpon>202304020020473_availability-table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304141636240_DepartmentStaticImplicitOperator.resx">
-      <DependentUpon>202304141636240_DepartmentStaticImplicitOperator.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202304182008076_availabilitytable.resx">
+      <DependentUpon>202304182008076_availabilitytable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
