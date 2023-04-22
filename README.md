@@ -15,3 +15,11 @@ Hospital project for Humber College, Group 6 - recreate how the hospitals solve 
 - Schedule
 - Volunteer
 - Department (shared)
+
+# Beatrice Tan
+- Full CRUD
+- Patients (1 to Many Relationships with Appointments)
+- Appointments (1 to Many Relationships with Appointments)
+- Views Table (List, Details, Add, Ipdate, Delete)
+- Physicians (shared)
+- Github repo link: https://github.com/beartisan/HospitalProject-New.git
